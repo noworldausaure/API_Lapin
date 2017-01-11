@@ -1,5 +1,6 @@
 {
     "require": {
-        "slim/slim-skeleton": "^3.1"
+        "slim/slim-skeleton": "^3.1",
+        "slim/pdo": "~1.9"
     }
 }
