@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
--- Host: localhost    Database: lapin
+-- Host: localhost    Database: lapin_user
 -- ------------------------------------------------------
 -- Server version	5.7.16-0ubuntu0.16.04.1
 
@@ -16,81 +16,51 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `info`
+-- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `info`;
+DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `info` (
-  `short_name` varchar(255) DEFAULT NULL,
-  `large_name` varchar(255) DEFAULT NULL,
-  `author` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `favicon` varchar(255) DEFAULT NULL,
-  `profil_picture` varchar(255) DEFAULT NULL,
-  `ban_picture` varchar(255) DEFAULT NULL,
+CREATE TABLE `admin` (
+  `name` varchar(255) DEFAULT NULL,
+  `login` varchar(255) DEFAULT NULL,
+  `pwd` varchar(40) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `info`
+-- Dumping data for table `admin`
 --
 
-LOCK TABLES `info` WRITE;
-/*!40000 ALTER TABLE `info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `info` ENABLE KEYS */;
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `stories`
+-- Table structure for table `s_user`
 --
 
-DROP TABLE IF EXISTS `stories`;
+DROP TABLE IF EXISTS `s_admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `stories` (
-  `title` varchar(255) DEFAULT NULL,
+CREATE TABLE `s_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_admin` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `stories`
+-- Dumping data for table `s_user`
 --
 
-LOCK TABLES `stories` WRITE;
-/*!40000 ALTER TABLE `stories` DISABLE KEYS */;
-/*!40000 ALTER TABLE `stories` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `strips`
---
-
-DROP TABLE IF EXISTS `strips`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `strips` (
-  `title` varchar(255) DEFAULT NULL,
-  `file` varchar(255) DEFAULT NULL,
-  `story_id` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `strips`
---
-
-LOCK TABLES `strips` WRITE;
-/*!40000 ALTER TABLE `strips` DISABLE KEYS */;
-/*!40000 ALTER TABLE `strips` ENABLE KEYS */;
+LOCK TABLES `s_admin` WRITE;
+/*!40000 ALTER TABLE `s_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -102,4 +72,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-11 12:02:21
+-- Dump completed on 2017-01-12 15:28:06
