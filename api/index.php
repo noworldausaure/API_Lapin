@@ -4,8 +4,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require 'vendor/autoload.php';
 require 'sql/connect.php';
-require 'lib/new.php';
-require 'lib/select.php';
+require 'lib/script/new.php';
+require 'lib/script/select.php';
 
 
 $app = new \Slim\App;
@@ -24,32 +24,27 @@ $app->post('/newDomaine',function($request, $response, $args){
 // INFO
 $app->get('/info',function($request, $response, $args){
   getAllInfo();
-});
+});//OK
 $app->get('/info/{dom}',function($request, $response, $args){
   getInfoByDomaine($args['dom']);
-});
+});//OK
 $app->get('/info/author/{author}', function($request, $response, $args){
   getInfoByAuthor($args['author']);
-});
+});//OK
+
 // STRIPS
-
-$app->get('/strips/{domaine}',function($request, $response, $args){
-  getStripsByDomaine($args['domaine']);
+$app->get('/strips/{domaine}[/{id}]',function($request, $response, $args){
+  getStripsByDomaine($args['domaine'],$args['id']);
 });
-$app->get('/strips', function($request,$responde,$args){
-  getStripById();
-})
+
 // STORIES
-$app->get('/stories/{domaine}',function($request, $response, $args){
-  getStoriesByDomaine($args['domaine']);
-});
-$app->get('/stories', function($request, $reponse, $args){
-  getStoriesById();
-});
+$app->get('/stories/{domaine}[/{id}]',function($request, $response, $args){
+  getStoriesByDomaine($args['domaine'],$args['id']);
+});//OK
 
-
-// SETTER
-
+// **********
+// * SETTER *
+// **********
 $app->run();
 
 ?>
