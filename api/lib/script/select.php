@@ -8,8 +8,8 @@ function getAllInfo(){
   $exe = $query->execute();
 
   $data = $exe->fetchAll();
-
-  echo json_encode($data);
+  
+  echo ifEmpty($data);
 }
 
 function getInfoByDomaine($dom){
@@ -21,7 +21,7 @@ function getInfoByDomaine($dom){
 
   $data = $exe->fetch();
 
-  echo json_encode($data);
+  echo ifEmpty($data);
 }
 
 function getInfoByAuthor($author){
@@ -34,7 +34,7 @@ function getInfoByAuthor($author){
 
   $data = $exe->fetch();
 
-  echo json_encode($data);
+  echo ifEmpty($data);
 }
 // END INFO
 
@@ -47,10 +47,10 @@ function getStripsByDomaine($dom,$id){
                 ->where('id','=',$id);
 
     $exe = $query->execute();
-
     $data = $exe->fetchAll();
 
-    echo json_encode($data);
+    echo ifEmpty($data);
+
   }
   else{
   $db = connectDb($dom);
@@ -62,7 +62,8 @@ function getStripsByDomaine($dom,$id){
 
   $data = $exe->fetchAll();
 
-  echo json_encode($data);
+  echo ifEmpty($data);
+
   }
 }
 // END STRIPS
@@ -79,7 +80,7 @@ function getStoriesByDomaine($dom,$id){
 
     $data = $exe->fetchAll();
 
-    echo json_encode($data);
+    echo ifEmpty($data);
   }
   else{
   $db = connectDb($dom);
@@ -91,7 +92,7 @@ function getStoriesByDomaine($dom,$id){
 
   $data = $exe->fetchAll();
 
-  echo json_encode($data);
+  echo ifEmpty($data);
  }
 }
 //END STORIES

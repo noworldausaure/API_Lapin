@@ -4,9 +4,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require 'vendor/autoload.php';
 require 'sql/connect.php';
-require 'lib/script/new.php';
-require 'lib/script/select.php';
-
+require 'lib/loader.php';
 
 $app = new \Slim\App;
 // *******************
@@ -59,9 +57,10 @@ $app->get('/user/getSadmin',function($request, $response, $args){
 // **********
 
 // INFO
+//ADD NEW AUTHOR AND NEW DB CREATE
 $app->post('/info/newAuthor',function($request, $response, $args){
   addInfo($request->getParsedBody());
-});
+});//OK NEED TO ADD RESPONSE OBJECT
 
 // USER
 $app->post('/user/newUser',function($request, $response, $args){
@@ -74,12 +73,20 @@ $app->post('/user/login',function($request, $response, $args){
 // STRIPS
 $app->post('/strips/newStrip',function($request, $response, $args){
     addStrip($request->getParsedBody());
-});
+});//OK NEED TO ADD RESPONSE OBJECT
 
 // STORIES
 $app->post('/stories/newStories',function($request, $response, $args){
     addStories($request->getParsedBody());
-});
+});//OK NEED TO ADD RESPONSE OBJECT
+
+//**********
+//* DELETE *
+//**********
+
+//**********
+//* UPDATE *
+//**********
 $app->run();
 
 ?>
