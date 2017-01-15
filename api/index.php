@@ -84,6 +84,20 @@ $app->post('/stories/newStories',function($request, $response, $args){
 //* DELETE *
 //**********
 
+// STORIES
+$app->post('/stories/deleteStories[/withStrips]',function($request, $response, $args){
+  DeleteStories($request->getParsedBody(),$args['withStrips']);
+});
+
+// STRIPS
+$app->post('/strips/deleteStrips',function($request, $response, $args){
+  DeleteStories($request->getParsedBody());
+});
+
+// INFO
+$app->post('/info/deleteInfo',function($request, $response, $args){
+  DeleteStories($request->getParsedBody());
+});
 //**********
 //* UPDATE *
 //**********
