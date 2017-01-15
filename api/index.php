@@ -35,16 +35,51 @@ $app->get('/info/author/{author}', function($request, $response, $args){
 // STRIPS
 $app->get('/strips/{domaine}[/{id}]',function($request, $response, $args){
   getStripsByDomaine($args['domaine'],$args['id']);
-});
+});//OK
 
 // STORIES
 $app->get('/stories/{domaine}[/{id}]',function($request, $response, $args){
   getStoriesByDomaine($args['domaine'],$args['id']);
 });//OK
 
+// USER
+$app->get('/user/getUser',function($request, $response, $args){
+  getStoriesByDomaine($args['domaine'],$args['id']);
+});
+$app->get('/user/getAdmin',function($request, $response, $args){
+  getStoriesByDomaine($args['domaine'],$args['id']);
+});
+$app->get('/user/getSadmin',function($request, $response, $args){
+  getStoriesByDomaine($args['domaine'],$args['id']);
+});
+
+
 // **********
 // * SETTER *
 // **********
+
+// INFO
+$app->post('/info/newAuthor',function($request, $response, $args){
+  addInfo($request->getParsedBody());
+});
+
+// USER
+$app->post('/user/newUser',function($request, $response, $args){
+  addUser($request->getParsedBody());
+});
+$app->post('/user/login',function($request, $response, $args){
+  login($request->getParsedBody());
+});
+
+// STRIPS
+$app->post('/strips/newStrip',function($request, $response, $args){
+    addStrip($request->getParsedBody());
+});
+
+// STORIES
+$app->post('/stories/newStories',function($request, $response, $args){
+    addStories($request->getParsedBody());
+});
 $app->run();
 
 ?>
