@@ -80,19 +80,16 @@ $app->post('/delete/domaine', function($request, $response, $args){
   dropTheBase($request->getParsedBody());
 });
 
-// STORIES
-$app->post('/delete/stories[/withStrips]',function($request, $response, $args){
-    deleteStories($request->getParsedBody(), $args['withStrips']);
-});
+//STORIES
+$app->post('/delete/stories', function($request, $response, $args){
+  deleteStories($request->getParsedBody());
+});//OK
 
-// STRIPS
-$app->post('/delete/strips[/withStrips]',function($request, $response, $args){
-    deleteStrips($request->getParsedBody(), $args['withStrips']);
-});
-// INFO
-$app->post('/delete/info',function($request, $response, $args){
-    deleteInfo($request->getParsedBody(), $args['withStrips']);
-});
+//STRIPS
+$app->post('/delete/strips',function($request, $response, $args){
+  deleteStrips($request->getParsedBody());
+});//OK
+
 //**********
 //* UPDATE *
 //**********

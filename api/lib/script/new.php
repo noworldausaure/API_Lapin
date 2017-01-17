@@ -1,7 +1,6 @@
 <?php
 
 function addStrip($data){
-  echo $data;
   $db = connectDb(e($data['domaine']));
 
   $query = $db->insert(array('title','file','story_id','date'))

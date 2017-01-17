@@ -39,8 +39,8 @@ function addDomInfo($data){
   $db = connectDb($data['short_name']);
 
   $query = $db->insert(array('short_name','large_name','author','favicon','pwd'))
-  ->into('info')
-  ->values(array(e($data['short_name']),e($data['large_name']),e($data['author']),e($data['favicon']),e($data['pwd'])));
+              ->into('info')
+              ->values(array(e($data['short_name']),e($data['large_name']),e($data['author']),e($data['favicon']),e($data['pwd'])));
   if($exe = $query->execute()){
     echo 'Ok Domaine Info Enregistrer';
   }
