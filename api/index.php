@@ -97,15 +97,20 @@ $app->post('/delete/info',function($request, $response, $args){
 //* UPDATE *
 //**********
 
-$app->post('/update/info/', function($request,$response, $args){
+//INFO
+$app->post('/update/info', function($request,$response, $args){
   updateInfo($request->getParsedBody());
-});
-$app->post('/update/strips/', function($request,$response,$args){
-  updateStrips($request->getParseBody());
-});
+});//Ok need to add update name db in case of change short_name
+
+//STRIPS
+$app->post('/update/strips', function($request,$response,$args){
+  updateStrips($request->getParsedBody());
+});//OK
+
+//STORIES
 $app->post('/update/stories', function($request,$response,$args){
-  updateStories($request->getParseBody());
-});
+  updateStories($request->getParsedBody());
+});//OK
 
 $app->run();
 

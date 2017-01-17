@@ -15,6 +15,7 @@
     }
   }
 
+// UPDATE DOMAINE INFO
   function updateInfo($data){
     $db = connectDb($data['domaine']);
 
@@ -34,6 +35,30 @@
     }
   }
 
+//UPDATE STRIPS
+function updateStrips($data){
+  $db = connectDb($data['domaine']);
 
+  $query = $db->update(array('title' => e($data['title'])))
+              ->set(array('file' => e($data['file'])))
+              ->set(array('story_id' => e($data['story_id'])))
+              ->table('strips')
+              ->where('id', '=',$data['id']);
+  if($exe = $query->execute()){
+    echo 'strip mise à jour';
+  }
+}
+
+//UPDATE STORIES
+function updateStories($data){
+  $db = connectDb($data['domaine']);
+
+  $query = $db->update(array('title' => e($data['title'])))
+              ->table('stories')
+              ->where('id', '=', $data['id']);
+  if($exe = $query->execute()){
+    echo 'stories mise à jour';
+  }
+}
 
  ?>
