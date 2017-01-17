@@ -10,25 +10,25 @@ $app = new \Slim\App;
 // *******************
 // * SETTINGS NEW DB *
 // *******************
-$app->post('/newDomaine',function($request, $response, $args){
-    newDb($request->getParsedBody());
-  });
 
+$app->post('/newDomaine',function($request, $response, $args){
+  newDomaine($request->getParsedBody());
+});
 
 // **********
 // * GETTER *
 // **********
 
 // INFO
-$app->get('/info',function($request, $response, $args){
-  getAllInfo();
+$app->get('/infoGeneral',function($request, $response, $args){
+  getGenInfo();
 });//OK
 $app->get('/info/{dom}',function($request, $response, $args){
   getInfoByDomaine($args['dom']);
-});//OK
+});
 $app->get('/info/author/{author}', function($request, $response, $args){
   getInfoByAuthor($args['author']);
-});//OK
+});
 
 // STRIPS
 $app->get('/strips/{domaine}[/{id}]',function($request, $response, $args){
@@ -57,7 +57,7 @@ $app->get('/user/getSadmin',function($request, $response, $args){
 // **********
 
 // INFO
-//ADD NEW AUTHOR AND NEW DB CREATE
+//COMPLETE INFO FROM DB CREATION
 $app->post('/info/newAuthor',function($request, $response, $args){
   addInfo($request->getParsedBody());
 });//OK NEED TO ADD RESPONSE OBJECT
@@ -84,23 +84,32 @@ $app->post('/stories/newStories',function($request, $response, $args){
 //* DELETE *
 //**********
 
-// STORIES
-$app->post('/stories/deleteStories[/withStrips]',function($request, $response, $args){
-  DeleteStories($request->getParsedBody(),$args['withStrips']);
+// DOMAINE
+$app->post('/delete/domaine', function($request, $response, $args){
+  dropTheBase($request->getParsedBody());
 });
+
+// STORIES
+$app->post('/delete/stories[/withStrips]',function($request, $response, $args){
+    deleteStories($request->getParsedBody(), $args['withStrips']);
+});//OK NEED TO ADD RESPONSE OBJECT
 
 // STRIPS
-$app->post('/strips/deleteStrips',function($request, $response, $args){
-  DeleteStories($request->getParsedBody());
+$app->post('/delete/strips[/withStrips]',function($request, $response, $args){
+    deleteStrips($request->getParsedBody(), $args['withStrips']);
 });
-
 // INFO
-$app->post('/info/deleteInfo',function($request, $response, $args){
-  DeleteStories($request->getParsedBody());
+$app->post('/delete/info',function($request, $response, $args){
+    deleteInfo($request->getParsedBody(), $args['withStrips']);
 });
 //**********
 //* UPDATE *
 //**********
+
+$app->post('/update/info/{domaine}', function($request,$response, $args){
+  updateInfo();
+});
+
 $app->run();
 
 ?>

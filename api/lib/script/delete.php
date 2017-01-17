@@ -1,13 +1,13 @@
 <?php
 
-function deleteStories($data,$withStrips){
+function deleteStories($data){
   if(isset($data['domaine'])){
-    $db = connectDb('langues');
+    $db = connectDb($data['domaine']);
 
-    if($withStrips){
+    if($data['withStrips']){
       $query = $db->delete()
                   ->from('strips')
-                  ->where('id_story','=',$data['id']);
+                  ->where('story_id','=',$data['id']);
 
       if($query->execute()){
         echo 'strips supprimer';

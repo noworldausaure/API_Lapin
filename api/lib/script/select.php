@@ -1,25 +1,24 @@
 <?php
 // GETTER INFO
 function getAllInfo(){
-  $db = connectDb();
+  $db = connectDb('lapin');
   $query = $db->select()
               ->from('info')
               ->orderby('id');
   $exe = $query->execute();
 
   $data = $exe->fetchAll();
-  
+
   echo ifEmpty($data);
 }
 
 function getInfoByDomaine($dom){
-  $db = connectDb('lapin');
+  $db = connectDb($dom);
   $query = $db->select()
-              ->from('info')
-              ->where('short_name','=', $dom)->orWhere('large_name','=',$dom);
+              ->from('info');
   $exe = $query->execute();
 
-  $data = $exe->fetch();
+  $data = $exe->fetchAll();
 
   echo ifEmpty($data);
 }
