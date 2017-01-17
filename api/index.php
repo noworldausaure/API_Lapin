@@ -21,20 +21,16 @@ $app->post('/newDomaine',function($request, $response, $args){
 
 // INFO
 $app->get('/infoGeneral',function($request, $response, $args){
-  getGenInfo();
+  getAllInfo();
 });//OK
 $app->get('/info/{dom}',function($request, $response, $args){
   getInfoByDomaine($args['dom']);
-});
-$app->get('/info/author/{author}', function($request, $response, $args){
-  getInfoByAuthor($args['author']);
-});
+});//OK
 
 // STRIPS
 $app->get('/strips/{domaine}[/{id}]',function($request, $response, $args){
   getStripsByDomaine($args['domaine'],$args['id']);
 });//OK
-
 // STORIES
 $app->get('/stories/{domaine}[/{id}]',function($request, $response, $args){
   getStoriesByDomaine($args['domaine'],$args['id']);
@@ -42,13 +38,13 @@ $app->get('/stories/{domaine}[/{id}]',function($request, $response, $args){
 
 // USER
 $app->get('/user/getUser',function($request, $response, $args){
-  getStoriesByDomaine($args['domaine'],$args['id']);
+  getUser($args['domaine'],$args['id']);
 });
 $app->get('/user/getAdmin',function($request, $response, $args){
-  getStoriesByDomaine($args['domaine'],$args['id']);
+  getAdmin($args['domaine'],$args['id']);
 });
 $app->get('/user/getSadmin',function($request, $response, $args){
-  getStoriesByDomaine($args['domaine'],$args['id']);
+  getSadmin($args['domaine'],$args['id']);
 });
 
 
@@ -56,11 +52,6 @@ $app->get('/user/getSadmin',function($request, $response, $args){
 // * SETTER *
 // **********
 
-// INFO
-//COMPLETE INFO FROM DB CREATION
-$app->post('/info/newAuthor',function($request, $response, $args){
-  addInfo($request->getParsedBody());
-});//OK NEED TO ADD RESPONSE OBJECT
 
 // USER
 $app->post('/user/newUser',function($request, $response, $args){
@@ -92,7 +83,7 @@ $app->post('/delete/domaine', function($request, $response, $args){
 // STORIES
 $app->post('/delete/stories[/withStrips]',function($request, $response, $args){
     deleteStories($request->getParsedBody(), $args['withStrips']);
-});//OK NEED TO ADD RESPONSE OBJECT
+});
 
 // STRIPS
 $app->post('/delete/strips[/withStrips]',function($request, $response, $args){
@@ -106,8 +97,14 @@ $app->post('/delete/info',function($request, $response, $args){
 //* UPDATE *
 //**********
 
-$app->post('/update/info/{domaine}', function($request,$response, $args){
-  updateInfo();
+$app->post('/update/info/', function($request,$response, $args){
+  updateInfo($request->getParsedBody());
+});
+$app->post('/update/strips/', function($request,$response,$args){
+  updateStrips($request->getParseBody());
+});
+$app->post('/update/stories', function($request,$response,$args){
+  updateStories($request->getParseBody());
 });
 
 $app->run();

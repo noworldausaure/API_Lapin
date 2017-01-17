@@ -1,5 +1,7 @@
 <?php
 // GETTER INFO
+
+// GET GENERAL INFO
 function getAllInfo(){
   $db = connectDb('lapin');
   $query = $db->select()
@@ -12,6 +14,7 @@ function getAllInfo(){
   echo ifEmpty($data);
 }
 
+// GET INFO ON DOMAINE
 function getInfoByDomaine($dom){
   $db = connectDb($dom);
   $query = $db->select()
@@ -19,19 +22,6 @@ function getInfoByDomaine($dom){
   $exe = $query->execute();
 
   $data = $exe->fetchAll();
-
-  echo ifEmpty($data);
-}
-
-function getInfoByAuthor($author){
-  $db = connectDb('lapin');
-  $query = $db->select()
-              ->from('info')
-              ->where('author','=',$author);
-
-  $exe = $query->execute();
-
-  $data = $exe->fetch();
 
   echo ifEmpty($data);
 }
