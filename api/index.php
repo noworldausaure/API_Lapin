@@ -10,10 +10,20 @@ $app = new \Slim\App;
 // *******************
 // * SETTINGS NEW DB *
 // *******************
+$mw = function ($request, $response, $next) {
+    $dataLog = $request->getParsedBody();
+    if(login($dataLog)){
+      $response = $next($request, $response);
+      return $response;
+    }
+    else{
+      echo 'get Logged';
+    }
+};
 
 $app->post('/newDomaine',function($request, $response, $args){
   newDomaine($request->getParsedBody());
-});
+})->add($mw);
 
 // **********
 // * GETTER *
@@ -51,29 +61,29 @@ $app->get('/user/getUser',function($request, $response, $args){
 // USER
 $app->post('/user/newUser',function($request, $response, $args){
   addUser($request->getParsedBody());
-});
+})->add($mw);
 $app->post('/user/login',function($request, $response, $args){
   $response = login($request->getParsedBody());
   return $response;
-});
+})->add($mw);
 $app->post('/{domaine}/admin', function($request, $response, $args){
     $response = loginDomaine($args['domaine'],$request->getParsedBody());
     if(count($response) == 1){
       return $response;
     }
-});//OK
+})->add($mw);//OK
 
 // STRIPS
 $app->post('/strips/newStrip',function($request, $response, $args){
   $response = addStrip($request->getParsedBody());
   return $response;
-});//OK
+})->add($mw);//OK
 
 // STORIES
 $app->post('/stories/newStories',function($request, $response, $args){
   $response = addStories($request->getParsedBody());
   return $response;
-});//OK
+})->add($mw);//OK
 
 //**********
 //* DELETE *
@@ -82,17 +92,17 @@ $app->post('/stories/newStories',function($request, $response, $args){
 // DOMAINE
 $app->post('/delete/domaine', function($request, $response, $args){
   dropTheBase($request->getParsedBody());
-});//OK
+})->add($mw);//OK
 
 //STORIES
 $app->post('/delete/stories', function($request, $response, $args){
   deleteStories($request->getParsedBody());
-});//OK
+})->add($mw);//OK
 
 //STRIPS
 $app->post('/delete/strips',function($request, $response, $args){
   deleteStrips($request->getParsedBody());
-});//OK
+})->add($mw);//OK
 
 //**********
 //* UPDATE *
@@ -101,17 +111,17 @@ $app->post('/delete/strips',function($request, $response, $args){
 //INFO
 $app->post('/update/info', function($request,$response, $args){
   updateInfo($request->getParsedBody());
-});//Ok need to add update name db in case of change short_name
+})->add($mw);//Ok need to add update name db in case of change short_name
 
 //STRIPS
 $app->post('/update/strips', function($request,$response,$args){
   updateStrips($request->getParsedBody());
-});//OK
+})->add($mw);//OK
 
 //STORIES
 $app->post('/update/stories', function($request,$response,$args){
   updateStories($request->getParsedBody());
-});//OK
+})->add($mw);//OK
 
 
 $app->run();
