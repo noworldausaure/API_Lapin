@@ -7,7 +7,10 @@ function addStrip($data){
               ->into('strips')
               ->values(array(e($data['title']),e($data['file']),e($data['story_id']),e($data['date'])));
   if($exe = $query->execute()){
-    echo 'OK';
+    return 'Strips correctement Enregistrer';
+  }
+  else{
+    return 'Probleme d\'enregistrement du strips';
   }
 }
 
@@ -19,7 +22,10 @@ function addStories($data){
               ->into('stories')
               ->values(array(e($data['title'])));
   if($exe = $query->execute()){
-    echo 'OK';
+    return 'Stories Enregistrer';
+  }
+  else{
+    return 'Probleme d\'enregistrement de la storie';
   }
 }
  ?>

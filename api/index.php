@@ -40,12 +40,7 @@ $app->get('/stories/{domaine}[/{id}]',function($request, $response, $args){
 $app->get('/user/getUser',function($request, $response, $args){
   getUser($args['domaine'],$args['id']);
 });
-$app->get('/user/getAdmin',function($request, $response, $args){
-  getAdmin($args['domaine'],$args['id']);
-});
-$app->get('/user/getSadmin',function($request, $response, $args){
-  getSadmin($args['domaine'],$args['id']);
-});
+
 
 
 // **********
@@ -60,16 +55,24 @@ $app->post('/user/newUser',function($request, $response, $args){
 $app->post('/user/login',function($request, $response, $args){
   login($request->getParsedBody());
 });
+$app->post('/{domaine}/admin', function($request, $response, $args){
+    $response = loginDomaine($args['domaine'],$request->getParsedBody());
+    if(count($response) == 1){
+      return $response;
+    }
+});//OK
 
 // STRIPS
 $app->post('/strips/newStrip',function($request, $response, $args){
-    addStrip($request->getParsedBody());
-});//OK NEED TO ADD RESPONSE OBJECT
+  $response = addStrip($request->getParsedBody());
+  return $response;
+});//OK
 
 // STORIES
 $app->post('/stories/newStories',function($request, $response, $args){
-    addStories($request->getParsedBody());
-});//OK NEED TO ADD RESPONSE OBJECT
+  $response = addStories($request->getParsedBody());
+  return $response;
+});//OK
 
 //**********
 //* DELETE *
@@ -78,7 +81,7 @@ $app->post('/stories/newStories',function($request, $response, $args){
 // DOMAINE
 $app->post('/delete/domaine', function($request, $response, $args){
   dropTheBase($request->getParsedBody());
-});
+});//OK
 
 //STORIES
 $app->post('/delete/stories', function($request, $response, $args){
@@ -108,6 +111,7 @@ $app->post('/update/strips', function($request,$response,$args){
 $app->post('/update/stories', function($request,$response,$args){
   updateStories($request->getParsedBody());
 });//OK
+
 
 $app->run();
 
