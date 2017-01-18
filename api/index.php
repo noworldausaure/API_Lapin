@@ -17,8 +17,8 @@ $app = new \Slim\App;
 // * SETTINGS NEW DB *
 // *******************
 
-$app->post('/newDomaine',function($request, $response, $args){
-  newDomaine($request->getParsedBody());
+$app->post('/newDomain',function($request, $response, $args){
+  newDomain($request->getParsedBody());
 });
 
 // **********
@@ -30,21 +30,21 @@ $app->get('/infoGeneral',function($request, $response, $args){
   getAllInfo();
 });//OK
 $app->get('/info/{dom}',function($request, $response, $args){
-  getInfoByDomaine($args['dom']);
+  getInfoByDomain($args['dom']);
 });//OK
 
 // STRIPS
-$app->get('/strips/{domaine}[/{id}]',function($request, $response, $args){
-  getStripsByDomaine($args['domaine'],$args['id']);
+$app->get('/strips/{domain}[/{id}]',function($request, $response, $args){
+  getStripsByDomain($args['domain'],$args['id']);
 });//OK
 // STORIES
-$app->get('/stories/{domaine}[/{id}]',function($request, $response, $args){
-  getStoriesByDomaine($args['domaine'],$args['id']);
+$app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
+  getStoriesByDomain($args['domain'],$args['id']);
 });//OK
 
 // USER
 $app->get('/user/getUser',function($request, $response, $args){
-  getUser($args['domaine'],$args['id']);
+  getUser($args['domain'],$args['id']);
 });
 
 
@@ -62,8 +62,8 @@ $app->post('/user/login',function($request, $response, $args){
   $response = login($request->getParsedBody());
   return $response;
 });
-$app->post('/{domaine}/admin', function($request, $response, $args){
-    $response = loginDomaine($args['domaine'],$request->getParsedBody());
+$app->post('/{domain}/admin', function($request, $response, $args){
+    $response = loginDomain($args['domain'],$request->getParsedBody());
     if(count($response) == 1){
       return $response;
     }
@@ -86,7 +86,7 @@ $app->post('/stories/newStories',function($request, $response, $args){
 //**********
 
 // DOMAINE
-$app->post('/delete/domaine', function($request, $response, $args){
+$app->post('/delete/domain', function($request, $response, $args){
   dropTheBase($request->getParsedBody());
 });//OK
 

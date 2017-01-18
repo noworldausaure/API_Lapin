@@ -10,10 +10,10 @@
   function dropThebase($data){
     $db = connectSql();
 
-    $sql = "DROP DATABASE " . $data['domaine'];
+    $sql = "DROP DATABASE " . $data['domain'];
 
     if($db->query($sql) == TRUE){
-      echo 'Domaine supprimer';
+      echo 'Domain supprimer';
     }
     else {
       echo "Erreur de suppression";
@@ -25,7 +25,7 @@
     if($data['all']){
       $db = connectSql();
 
-      $sql = "TRUNCATE Table " .$data['domaine'].".strips";
+      $sql = "TRUNCATE Table " .$data['domain'].".strips";
 
       if ($db->query($sql) === TRUE) {
         echo "Tout les Strips sont supprimer";
@@ -34,7 +34,7 @@
       }
     }
     else{
-      $db = connectDb($data['domaine']);
+      $db = connectDb($data['domain']);
 
       $query = $db->delete()
       ->from('strips')
@@ -47,7 +47,7 @@
 
   //DELETE STORIES (WITH STRIPS)
   function deleteStories($data){
-      $db = connectDb($data['domaine']);
+      $db = connectDb($data['domain']);
 
       $query = $db->delete()
                   ->from('stories')

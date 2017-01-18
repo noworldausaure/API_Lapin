@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
 --
--- Host: localhost    Database: domaineDb
+-- Host: localhost    Database: domainDb
 -- ------------------------------------------------------
 -- Server version	5.7.16-0ubuntu0.16.04.1
 

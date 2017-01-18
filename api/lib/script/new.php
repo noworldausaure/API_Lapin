@@ -7,7 +7,7 @@
 
 
 function addStrip($data){
-  $db = connectDb(e($data['domaine']));
+  $db = connectDb(e($data['domain']));
 
   $query = $db->insert(array('title','file','story_id','date'))
               ->into('strips')
@@ -22,7 +22,7 @@ function addStrip($data){
 
 function addStories($data){
   echo $data;
-  $db = connectDb(e($data['domaine']));
+  $db = connectDb(e($data['domain']));
 
   $query = $db->insert(array('title'))
               ->into('stories')

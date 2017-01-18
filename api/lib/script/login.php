@@ -6,10 +6,10 @@
 // ******************************************************
 
 
-  function loginDomaine($domaine,$data){
+  function loginDomain($domain,$data){
     $pwd = $data['pwd'];
 
-    $db = connectDb($domaine);
+    $db = connectDb($domain);
 
     $query = $db->select()
                 ->from('info')
