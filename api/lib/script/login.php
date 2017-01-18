@@ -1,4 +1,10 @@
 <?php
+// ******************************************************
+// * stripeuse4.0 for lapin.org                         *
+// * this file is under GLPv3 or higher                 *
+// * 2017 Quentin Pourriot <quentinpourriot@outlook.fr> *
+// ******************************************************
+
 
   function loginDomaine($domaine,$data){
     $pwd = $data['pwd'];
