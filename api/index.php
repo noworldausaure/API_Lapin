@@ -53,7 +53,8 @@ $app->post('/user/newUser',function($request, $response, $args){
   addUser($request->getParsedBody());
 });
 $app->post('/user/login',function($request, $response, $args){
-  login($request->getParsedBody());
+  $response = login($request->getParsedBody());
+  return $response;
 });
 $app->post('/{domaine}/admin', function($request, $response, $args){
     $response = loginDomaine($args['domaine'],$request->getParsedBody());
