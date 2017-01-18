@@ -1,9 +1,15 @@
 <?php
+// ******************************************************
+// * stripeuse4.0 for lapin.org                         *
+// * this file is under GLPv3 or higher                 *
+// * 2017 Quentin Pourriot <quentinpourriot@outlook.fr> *
+// ******************************************************
 
-  function loginDomaine($domaine,$data){
+
+  function loginDomain($domain,$data){
     $pwd = $data['pwd'];
 
-    $db = connectDb($domaine);
+    $db = connectDb($domain);
 
     $query = $db->select()
                 ->from('info')

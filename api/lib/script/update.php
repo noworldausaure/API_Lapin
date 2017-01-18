@@ -1,4 +1,10 @@
 <?php
+// ******************************************************
+// * stripeuse4.0 for lapin.org                         *
+// * this file is under GLPv3 or higher                 *
+// * 2017 Quentin Pourriot <quentinpourriot@outlook.fr> *
+// ******************************************************
+
 
 // Update general INFO
   function updateGenInfo($data){
@@ -17,7 +23,7 @@
 
 // UPDATE DOMAINE INFO
   function updateInfo($data){
-    $db = connectDb($data['domaine']);
+    $db = connectDb($data['domain']);
 
     $query = $db->update(array('short_name' => e($data['short_name'])))
                 ->set(array('large_name' => e($data['large_name'])))
@@ -37,7 +43,7 @@
 
 //UPDATE STRIPS
 function updateStrips($data){
-  $db = connectDb($data['domaine']);
+  $db = connectDb($data['domain']);
 
   $query = $db->update(array('title' => e($data['title'])))
               ->set(array('file' => e($data['file'])))
@@ -51,7 +57,7 @@ function updateStrips($data){
 
 //UPDATE STORIES
 function updateStories($data){
-  $db = connectDb($data['domaine']);
+  $db = connectDb($data['domain']);
 
   $query = $db->update(array('title' => e($data['title'])))
               ->table('stories')

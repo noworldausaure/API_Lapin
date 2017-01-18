@@ -1,7 +1,13 @@
 <?php
+// ******************************************************
+// * stripeuse4.0 for lapin.org                         *
+// * this file is under GLPv3 or higher                 *
+// * 2017 Quentin Pourriot <quentinpourriot@outlook.fr> *
+// ******************************************************
+
 
 function addStrip($data){
-  $db = connectDb(e($data['domaine']));
+  $db = connectDb(e($data['domain']));
 
   $query = $db->insert(array('title','file','story_id','date'))
               ->into('strips')
@@ -16,7 +22,7 @@ function addStrip($data){
 
 function addStories($data){
   echo $data;
-  $db = connectDb(e($data['domaine']));
+  $db = connectDb(e($data['domain']));
 
   $query = $db->insert(array('title'))
               ->into('stories')

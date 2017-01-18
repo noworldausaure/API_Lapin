@@ -1,4 +1,10 @@
 <?php
+// ******************************************************
+// * stripeuse4.0 for lapin.org                         *
+// * this file is under GLPv3 or higher                 *
+// * 2017 Quentin Pourriot <quentinpourriot@outlook.fr> *
+// ******************************************************
+
 // GETTER INFO
 
 // GET GENERAL INFO
@@ -15,7 +21,7 @@ function getAllInfo(){
 }
 
 // GET INFO ON DOMAINE
-function getInfoByDomaine($dom){
+function getInfoByDomain($dom){
   $db = connectDb($dom);
   $query = $db->select()
               ->from('info');
@@ -28,7 +34,7 @@ function getInfoByDomaine($dom){
 // END INFO
 
 // STRIPS GETTER
-function getStripsByDomaine($dom,$id){
+function getStripsByDomain($dom,$id){
   if(isset($id)){
     $db = connectDb($dom);
     $query = $db->select()
@@ -58,7 +64,7 @@ function getStripsByDomaine($dom,$id){
 // END STRIPS
 
 //STORIES GETTER
-function getStoriesByDomaine($dom,$id){
+function getStoriesByDomain($dom,$id){
   if(isset($id)){
     $db = connectDb($dom);
     $query = $db->select()

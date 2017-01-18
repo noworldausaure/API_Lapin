@@ -1,6 +1,12 @@
 <?php
+// ******************************************************
+// * stripeuse4.0 for lapin.org                         *
+// * this file is under GLPv3 or higher                 *
+// * 2017 Quentin Pourriot <quentinpourriot@outlook.fr> *
+// ******************************************************
 
-function newDomaine($data){
+
+function newDomain($data){
   $db = connectDb('lapin');
 
   $query = $db->insert(array('short_name','large_name','author','favicon'))
@@ -42,7 +48,7 @@ function addDomInfo($data){
               ->into('info')
               ->values(array(e($data['short_name']),e($data['large_name']),e($data['author']),e($data['favicon']),e($data['pwd'])));
   if($exe = $query->execute()){
-    echo 'Ok Domaine Info Enregistrer';
+    echo 'Ok Domain Info Enregistrer';
   }
 }
 
