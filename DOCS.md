@@ -15,78 +15,343 @@ STRIPEUSE LAPIN.ORG API
     }
 }
 ```
+---
 
-## Function
 
-### GET
+**TITLE**: Get general info
 
-#### /infoGeneral
+**URL** : /infoGeneral
 
-return all info from lapin.info
+**METHOD**:GET
 
-#### /info/{domain}
+**URL PARAMS**: None
 
-return all info from specific domain
+**SUCCESS REPONSE** : 200
 
-#### /strips/{domain}/{id}
-
-return strips from specific domain
-
-*id is optional*
-
-#### /stories/{domain}/{id}
-
-return stories from specific domain
-
-*id is optional*
 
 ---
 
-### POST
+**TITLE**: Get info from specific domain
 
-#### /newDomain
+**URL** : /info/:domain
 
-#### /user/login
+**METHOD**:GET
 
-#### /{domain}/admin
+**URL PARAMS**: Required = [domain]
+
+**SUCCESS REPONSE** : 200
+
+**ERROR REPONSE** : 404
+
+---
 
 
+**TITLE**: Get strips from specific domain
 
-#### /strips/newStrip
+**URL** : /strips/:domain/:id
 
-Add new strips
+**METHOD**:GET
 
-Parameters to post:
+**URL PARAMS**: Required = [domain] & Optional = [id]
 
-##### /stories/newStories
-Add new stories
+**SUCCESS REPONSE** : 200
 
-Parameters to post:
+**ERROR REPONSE** : 404
+
+**Note** : if return one strips if id is set
+
+---
+
+**TITLE**: Get strips from specific domain
+
+**URL** : /stories/:domain/:id
+
+**METHOD**:GET
+
+**URL PARAMS**: Required = [domain] & Optional = [id]
+
+**SUCCESS REPONSE** : 200
+
+**ERROR REPONSE** : 404
+
+**Note** : if return one stories if id is set
+
+---
+
+**TITLE**: Create new domain (need admin right)
+
+**URL** : /newDomain
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "short_name":"gluby",
+    "large_name":"gluby on ice",
+    "author":"Alexande droposki",
+    "favicon":"favicon.jpg",
+    "login":"admin",
+    "pwd":"password"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+
+**Note** :
+- Create domain database with info strips and stories table on it
+- add automatically info on  lapin.info
+- add automatically info on the domain.info create
+- don't work if the short_name is the same one other domain
+
+---
+
+**TITLE**: login admin
+
+**URL** : /user/login
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "login":"admin",
+    "pwd":"password"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+
+---
+
+**TITLE**: login admin on specific  domain
+
+**URL** : /:domain/admin
+
+**METHOD**:POST
+
+**URL PARAMS**: Required = [domain]
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+    "pwd":"password"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+
+---
+
+**TITLE**: add new strips on specific domain
+
+**URL** : /strips/newStrip
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+    "title":"an awesomestrips",
+    "file":"awesomestrips.jpg",
+    "date":"2015-05-19 19:05:15",
+    "id_story":"password"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+---
+
+**TITLE**: add new stories on specific domain
+
+**URL** : /Stories/newStories
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+    "title":"myawesomestories"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+---
+
+**TITLE**: update info
+
+**URL** : /update/info
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+    "short_name":"glubyraptor",
+    "large_name":"Gluby saint raptor",
+    "author":"Alexando del raptor",
+    "favicon":"raptor.jpg",
+    "description":"the beautiful raptor making strips for you",
+    "profil_picture":"raptor_pro.jpg",
+    "ban_picture":"raptor_ban.jpg",
+    "first_pub":"raptor_pub.jpg"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+**Note** :
+- automatically change info from lapin.info and domain.info
+
+---
+
+**TITLE**: update strips
+
+**URL** : /update/strips
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+    "title":"this strips",
+    "file":"newstrips.jpg",
+    "story_id":1,
+    "id":2
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+---
+
+**TITLE**: update strips
+
+**URL** : /update/stories
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+    "title":"this stories",
+    "id":2
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+---
+
+**TITLE**: drop database domain
+
+**URL** : /delete/domain
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+---
+
+**TITLE**: delete stories
+
+**URL** : /delete/stories
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby"
+    "id":1
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+**Note**:
+- you can add the 'withStrip' params(Bool) who with delete all strips affiliate at the id send
+
+---
+**TITLE**: delete strips
+
+**URL** : /delete/strips
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby"
+    "id":1
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : login
+
+**Note**:
+- you can add the 'all' params(Bool) who with truncate the table strips of the domain specify
 
 ----
 
-
-### PUT
-
-#### /update/info
-
-#### /update/strips
-
-#### /update/stories
-
-----
-
-### DELETE
-#### /delete/domain
-
-#### /delete/stories
-
-#### /delete/strips
-
-----
-
-## Middleware
-Basic login Middleware you have to post your login and password on all request who need admin power.
+## MIDDLEWARE
+Basic login MIDDLEWARE you have to post your login and password on all request who need admin right.
 ```php
 $mw = function ($request, $response, $next) {
     $dataLog = $request->getParsedBody();
