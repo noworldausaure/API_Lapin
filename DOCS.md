@@ -15,6 +15,10 @@ STRIPEUSE LAPIN.ORG API
     }
 }
 ```
+
+- Configure [config-db.php.sample](https://github.com/noworldausaure/API_Lapin/blob/master/api/sql/config-db.php.sample)
+
+
 ---
 
 
@@ -58,7 +62,7 @@ STRIPEUSE LAPIN.ORG API
 
 **ERROR REPONSE** : 404
 
-**Note** : if return one strips if id is set
+**Note** : return one strips if id is set
 
 ---
 
@@ -74,7 +78,7 @@ STRIPEUSE LAPIN.ORG API
 
 **ERROR REPONSE** : 404
 
-**Note** : if return one stories if id is set
+**Note** : return one stories if id is set
 
 ---
 

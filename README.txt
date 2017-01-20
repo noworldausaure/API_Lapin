@@ -8,7 +8,7 @@ Extract this file in web folder. Copy api/sql/config-db.php.sample to api/sql/co
 
 # Usage
 
-See DOCUMENTATION.txt for API reference
+See DOCUMENTATION.md for API reference
 
 # Authors
 
