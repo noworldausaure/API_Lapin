@@ -19,44 +19,71 @@ STRIPEUSE LAPIN.ORG API
 ## Function
 
 ### GET
-/infoGeneral
 
-/info/{domain}
+#### /infoGeneral
 
-/strips/{domain}/{id}
+return all info from lapin.info
+
+#### /info/{domain}
+
+return all info from specific domain
+
+#### /strips/{domain}/{id}
+
+return strips from specific domain
+
 *id is optional*
 
-/strips/{domain}/{id}
+#### /stories/{domain}/{id}
+
+return stories from specific domain
+
 *id is optional*
 
+---
 
 ### POST
 
-/newDomain
+#### /newDomain
 
-/user/login
+#### /user/login
 
-/{domain}/admin
+#### /{domain}/admin
 
-/strips/newStrip
 
-/stories/newStories
+
+#### /strips/newStrip
+
+Add new strips
+
+Parameters to post:
+
+##### /stories/newStories
+Add new stories
+
+Parameters to post:
+
+----
 
 
 ### PUT
-/update/info
 
-/update/strips
+#### /update/info
 
-/update/stories
+#### /update/strips
+
+#### /update/stories
+
+----
 
 ### DELETE
-/delete/domain
+#### /delete/domain
 
-/delete/stories
+#### /delete/stories
 
-/delete/strips
+#### /delete/strips
 
+----
 
 ## Middleware
 Basic login Middleware you have to post your login and password on all request who need admin power.

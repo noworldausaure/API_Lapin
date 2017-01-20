@@ -12,7 +12,11 @@ require 'vendor/autoload.php';
 require 'sql/connect.php';
 require 'lib/loader.php';
 
-$app = new \Slim\App;
+$app = new \Slim\App([
+  'settings' => [
+      'addContentLengthHeader' => false,
+    ],
+  ]);
 // *******************
 // * SETTINGS NEW DB *
 // *******************
@@ -21,9 +25,6 @@ $mw = function ($request, $response, $next) {
     if(login($dataLog)){
       $response = $next($request, $response);
       return $response;
-    }
-    else{
-      echo 'get Logged';
     }
 };
 
@@ -39,8 +40,8 @@ $app->post('/newDomain',function($request, $response, $args){
 $app->get('/infoGeneral',function($request, $response, $args){
   getAllInfo();
 });//OK
-$app->get('/info/{dom}',function($request, $response, $args){
-  getInfoByDomain($args['dom']);
+$app->get('/info/{domain}',function($request, $response, $args){
+  getInfoByDomain($args['domain']);
 });//OK
 
 // STRIPS
@@ -72,7 +73,7 @@ $app->post('/user/newUser',function($request, $response, $args){
 $app->post('/user/login',function($request, $response, $args){
   $response = login($request->getParsedBody());
   return $response;
-})->add($mw);
+});
 
 $app->post('/{domain}/admin', function($request, $response, $args){
     $response = loginDomain($args['domain'],$request->getParsedBody());
@@ -91,7 +92,7 @@ $app->post('/strips/newStrip',function($request, $response, $args){
 $app->post('/stories/newStories',function($request, $response, $args){
   $response = addStories($request->getParsedBody());
   return $response;
-})->add($mw);//OK
+})->add ($mw);//OK
 
 //**********
 //* DELETE *
@@ -119,7 +120,7 @@ $app->post('/delete/strips',function($request, $response, $args){
 //INFO
 $app->post('/update/info', function($request,$response, $args){
   updateInfo($request->getParsedBody());
-})->add($mw);//Ok 
+})->add($mw);//Ok
 
 //STRIPS
 $app->post('/update/strips', function($request,$response,$args){

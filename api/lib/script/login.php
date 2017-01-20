@@ -29,10 +29,13 @@
                 ->where('name','=',$data['login'])->orWhere('login','=',$data['login']);
 
     $exec = $query->execute();
-    $donnee = $exec->fetchAll();
+    $donnee = $exec->fetch();
 
-    if($donnee[0]['pwd'] == $data['pwd']){
-      return true;
+    if($donnee['pwd'] == $data['pwd']){
+       return true;
+    }
+    else{
+      echo 'password/login incorrect';
     }
   }
 
