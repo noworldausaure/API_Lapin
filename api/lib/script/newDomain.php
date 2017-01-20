@@ -7,11 +7,11 @@
 
 
 function newDomain($data){
-  $db = connectDb('lapin');
+    $db = connectDb('lapin');
 
   $query = $db->insert(array('short_name','large_name','author','favicon'))
 								->into('info')
-								->values(array(e($data['short_name']),e($data['large_name']),e($data['author']),e($data['favicon'])));
+								->values(array($data['short_name'],e($data['large_name']),e($data['author']),e($data['favicon'])));
   if($exe = $query->execute()){
     newDb($data);
     addDomInfo($data);

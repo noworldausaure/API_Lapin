@@ -32,10 +32,7 @@
     $donnee = $exec->fetchAll();
 
     if($donnee[0]['pwd'] == $data['pwd']){
-      if(isSadmin($donnee[0]['id'])){
-        $donnee['sAdmin'] = true;
-      }
-      return $donnee;
+      return true;
     }
   }
 
