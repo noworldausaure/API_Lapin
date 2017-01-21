@@ -49,7 +49,6 @@
     $exec = $query->execute();
     $id = $exec->fetch();
 
-    var_dump($id);
 
     $query = $db->select()
                 ->from('s_admin')
