@@ -92,7 +92,7 @@ function getStoriesByDomain($dom,$id){
 }
 //END STORIES
 
-function getUser(){
+function getAdmin(){
   $db = connectDb('lapin');
 
   $query = $db->select()

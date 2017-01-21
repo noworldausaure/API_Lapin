@@ -70,7 +70,7 @@ $app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
 
 
 // USER
-$app->post('/user/getUser',function($request, $response, $args){
+$app->post('/user/getAdmin',function($request, $response, $args){
   $response = getUser();
   return $response;
 })->add($mwLoginSadmin);

@@ -354,6 +354,28 @@ STRIPEUSE LAPIN.ORG API
 
 ----
 
+**TITLE**: get list of admin
+
+**URL** : /user/getAdmin
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "login":"admin",
+    "pwd":"password"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : SAdmin Login
+
+---
+
 ## MIDDLEWARE
 Basic login MIDDLEWARE you have to post your login and password on all request who need admin right.
 ```php
