@@ -104,7 +104,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : SAdmin Login
 
 
 **Note** :
@@ -178,7 +178,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 ---
 
@@ -200,7 +200,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 ---
 
@@ -229,7 +229,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 **Note** :
 - automatically change info from lapin.info and domain.info
@@ -257,7 +257,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 ---
 
@@ -280,7 +280,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 ---
 
@@ -301,7 +301,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 ---
 
@@ -323,7 +323,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 **Note**:
 - you can add the 'withStrip' params(Bool) who with delete all strips affiliate at the id send
@@ -347,7 +347,7 @@ STRIPEUSE LAPIN.ORG API
 
 **SUCCESS REPONSE** : 200
 
-**MIDDLEWARE** : login
+**MIDDLEWARE** : Admin Login
 
 **Note**:
 - you can add the 'all' params(Bool) who with truncate the table strips of the domain specify
@@ -370,6 +370,23 @@ $mw = function ($request, $response, $next) {
 ```
 add
 ```php
-->add($mw);
+->add($mwLoginAdmin);
 ```
 after your routes
+
+---
+
+Same has login middleware but check if you are a super admin
+```php
+$mwLoginSadmin = function ($request, $response, $next) {
+    $dataLog = $request->getParsedBody();
+    if(isSadmin($dataLog)){
+      $response = $next($request, $response);
+      return $response;
+    }
+};
+```
+add
+```php
+->add($mwLoginSadmin);
+```
