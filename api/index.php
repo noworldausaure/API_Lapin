@@ -28,9 +28,17 @@ $mwLoginAdmin = function ($request, $response, $next) {
     }
 };
 
+$mwLoginSadmin = function ($request, $response, $next) {
+    $dataLog = $request->getParsedBody();
+    if(isSadmin($dataLog)){
+      $response = $next($request, $response);
+      return $response;
+    }
+};
+
 $app->post('/newDomain',function($request, $response, $args){
   newDomain($request->getParsedBody());
-})->add($mwLoginAdmin);
+})->add($mwLoginSadmin);
 
 // **********
 // * GETTER *
