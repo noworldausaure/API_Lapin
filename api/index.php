@@ -20,7 +20,7 @@ $app = new \Slim\App([
 // *******************
 // * SETTINGS NEW DB *
 // *******************
-$mw = function ($request, $response, $next) {
+$mwLoginAdmin = function ($request, $response, $next) {
     $dataLog = $request->getParsedBody();
     if(login($dataLog)){
       $response = $next($request, $response);
@@ -30,7 +30,7 @@ $mw = function ($request, $response, $next) {
 
 $app->post('/newDomain',function($request, $response, $args){
   newDomain($request->getParsedBody());
-})->add($mw);
+})->add($mwLoginAdmin);
 
 // **********
 // * GETTER *
@@ -53,10 +53,6 @@ $app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
   getStoriesByDomain($args['domain'],$args['id']);
 });//OK
 
-// USER
-$app->get('/user/getUser',function($request, $response, $args){
-  getUser($args['domain'],$args['id']);
-});
 
 
 
@@ -66,12 +62,12 @@ $app->get('/user/getUser',function($request, $response, $args){
 
 
 // USER
-$app->post('/user/newUser',function($request, $response, $args){
-  addUser($request->getParsedBody());
-})->add($mw);
-
+$app->get('/user/getUser',function($request, $response, $args){
+  $response = getUser();
+  return $response;
+});
 $app->post('/user/login',function($request, $response, $args){
-  $response = login($request->getParsedBody());
+  $response = isSadmin($request->getParsedBody());
   return $response;
 });
 
@@ -80,19 +76,19 @@ $app->post('/{domain}/admin', function($request, $response, $args){
     if(count($response) == 1){
       return $response;
     }
-})->add($mw);//OK
+})->add($mwLoginAdmin);//OK
 
 // STRIPS
 $app->post('/strips/newStrip',function($request, $response, $args){
   $response = addStrip($request->getParsedBody());
   return $response;
-})->add($mw);//OK
+})->add($mwLoginAdmin);//OK
 
 // STORIES
 $app->post('/stories/newStories',function($request, $response, $args){
   $response = addStories($request->getParsedBody());
   return $response;
-})->add ($mw);//OK
+})->add ($mwLoginAdmin);//OK
 
 //**********
 //* DELETE *
@@ -101,17 +97,17 @@ $app->post('/stories/newStories',function($request, $response, $args){
 // DOMAINE
 $app->post('/delete/domain', function($request, $response, $args){
   dropTheBase($request->getParsedBody());
-})->add($mw);//OK
+})->add($mwLoginAdmin);//OK
 
 //STORIES
 $app->post('/delete/stories', function($request, $response, $args){
   deleteStories($request->getParsedBody());
-})->add($mw);//OK
+})->add($mwLoginAdmin);//OK
 
 //STRIPS
 $app->post('/delete/strips',function($request, $response, $args){
   deleteStrips($request->getParsedBody());
-})->add($mw);//OK
+})->add($mwLoginAdmin);//OK
 
 //**********
 //* UPDATE *
@@ -120,17 +116,17 @@ $app->post('/delete/strips',function($request, $response, $args){
 //INFO
 $app->post('/update/info', function($request,$response, $args){
   updateInfo($request->getParsedBody());
-})->add($mw);//Ok
+})->add($mwLoginAdmin);//Ok
 
 //STRIPS
 $app->post('/update/strips', function($request,$response,$args){
   updateStrips($request->getParsedBody());
-})->add($mw);//OK
+})->add($mwLoginAdmin);//OK
 
 //STORIES
 $app->post('/update/stories', function($request,$response,$args){
   updateStories($request->getParsedBody());
-})->add($mw);//OK
+})->add($mwLoginAdmin);//OK
 
 
 $app->run();

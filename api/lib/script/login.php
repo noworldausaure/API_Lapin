@@ -31,7 +31,7 @@
     $exec = $query->execute();
     $donnee = $exec->fetch();
 
-    if($donnee['pwd'] == $data['pwd']){
+      if($donnee['pwd'] == $data['pwd']){
        return true;
     }
     else{
@@ -39,19 +39,29 @@
     }
   }
 
-  function isSadmin($id){
+  function isSadmin($data){
+    if(login($data)){
     $db = connectDb('lapin');
+    $query = $db->select(array('id'))
+                ->from('admin')
+                ->where('name','=',$data['login'])->orWhere('login','=',$data['login']);
+
+    $exec = $query->execute();
+    $id = $exec->fetch();
+
+    var_dump($id);
 
     $query = $db->select()
                 ->from('s_admin')
-                ->where('id_admin','=',$id);
+                ->where('id_admin','=',$id['id']);
     $exe = $query->execute();
 
-    if(count($exe->fetchAll()) == 1){
+    if(count($exe->fetch()) >= 2){
       return true;
       }
     else{
       return false;
     }
   }
- ?>
+}
+?>

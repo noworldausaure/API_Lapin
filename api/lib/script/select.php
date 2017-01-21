@@ -90,6 +90,7 @@ function getStoriesByDomain($dom,$id){
   echo ifEmpty($data);
  }
 }
+
 //END STORIES
 
  ?>
