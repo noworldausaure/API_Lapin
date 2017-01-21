@@ -70,10 +70,11 @@ $app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
 
 
 // USER
-$app->get('/user/getUser',function($request, $response, $args){
+$app->post('/user/getUser',function($request, $response, $args){
   $response = getUser();
   return $response;
-});
+})->add($mwLoginSadmin);
+
 $app->post('/user/login',function($request, $response, $args){
   $response = isSadmin($request->getParsedBody());
   return $response;

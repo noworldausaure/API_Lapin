@@ -90,7 +90,19 @@ function getStoriesByDomain($dom,$id){
   echo ifEmpty($data);
  }
 }
-
 //END STORIES
 
+function getUser(){
+  $db = connectDb('lapin');
+
+  $query = $db->select()
+              ->from('admin')
+              ->orderby('id');
+
+  $exe = $query->execute();
+
+  $data = $exe->fetchAll();
+
+  echo json_encode($data);
+}
  ?>
