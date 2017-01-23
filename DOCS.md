@@ -404,6 +404,59 @@ STRIPEUSE LAPIN.ORG API
 - sAdmin is a bool but if not true is optional. In case of true this will add the new admin into the super admin(s_admin) table.
 
 ---
+
+**TITLE**: delete an Admin
+
+**URL** : /admin/delete
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+  "login":"login",
+  "pwd":"password",
+  "id":1
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : SAdmin Login
+
+**NOTES** :
+- this route while do a blind query to delete admin in the s_admin table
+
+---
+
+**TITLE**: update Admin info
+
+**URL** : /update/admin
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+    {
+     "login":"login",
+     "pwd":"password",
+     "newName":"sayMyname",
+     "newLogin":"getThat",
+     "newPwd":"Ok",
+     "id":50
+   }
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : SAdmin Login
+
+---
+
 ## MIDDLEWARE
 Basic login MIDDLEWARE you have to post your login and password on all request who need admin right.
 ```php
