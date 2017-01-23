@@ -65,4 +65,21 @@
         }
       }
   }
+
+  function deleteAdmin($data){
+    $db = connectDb('lapin');
+
+    $query = $db->delete()
+                ->from('admin')
+                ->where('id','=',$data['id']);  
+    if($exe = $query->execute()){
+
+      $query = $db->delete()
+                  ->from('s_admin')
+                  ->where('id_admin','=',$data['id']);
+      $exe = $query->execute();
+
+      echo 'Admin supprimer';
+    }
+  }
  ?>

@@ -123,6 +123,9 @@ $app->post('/delete/strips',function($request, $response, $args){
   deleteStrips($request->getParsedBody());
 })->add($mwLoginAdmin);//OK
 
+$app->post('/admin/delete',function($request, $response, $args){
+  deleteAdmin($request->getParsedbody());
+})->add($mwLoginSadmin);
 //**********
 //* UPDATE *
 //**********
