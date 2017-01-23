@@ -34,7 +34,7 @@
                 ->set(array('ban_picture' => e($data['ban_picture'])))
                 ->set(array('first_pub' => e($data['first_pub'])))
                 ->table('info')
-                ->where('id','=', $data['id_Info']) ;
+                ->where('id','=', $data['id_info']) ;
     if($exe = $query->execute()){
       echo 'info mise à jour';
       updateGenInfo($data);

@@ -71,16 +71,16 @@ $app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
 
 // USER
 $app->post('/admin/getAdmin',function($request, $response, $args){
-  $response = getUser();
+  $response = getAdmin();
   return $response;
 })->add($mwLoginSadmin);
 
 $app->post('/admin/addAdmin',function($request, $response, $args){
   $response = addAdmin($request->getParsedBody());
   return $reponse;
-});
+})->add($mwLoginSadmin);
 
-$app->post('/user/login',function($request, $response, $args){
+$app->post('/admin/login',function($request, $response, $args){
   $response = isSadmin($request->getParsedBody());
   return $response;
 });
@@ -90,7 +90,7 @@ $app->post('/{domain}/admin', function($request, $response, $args){
     if(count($response) == 1){
       return $response;
     }
-})->add($mwLoginAdmin);//OK
+});//OK
 
 // STRIPS
 $app->post('/strips/newStrip',function($request, $response, $args){

@@ -51,7 +51,6 @@ function addAdmin($data){
 
       $data = $exe->fetch();
 
-      var_dump($data);
       $query = $db->insert(array('id_admin'))
                   ->into('s_admin')
                   ->values(array($data['id']));

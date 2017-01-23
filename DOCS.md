@@ -172,7 +172,7 @@ STRIPEUSE LAPIN.ORG API
     "title":"an awesomestrips",
     "file":"awesomestrips.jpg",
     "date":"2015-05-19 19:05:15",
-    "id_story":"password"
+    "story_id":1
 }
 ```
 
@@ -378,7 +378,7 @@ STRIPEUSE LAPIN.ORG API
 
 **TITLE**: add new admin
 
-**URL** : /user/addAdmin
+**URL** : /admin/addAdmin
 
 **METHOD**:POST
 
