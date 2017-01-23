@@ -21,7 +21,6 @@ function addStrip($data){
 }
 
 function addStories($data){
-  echo $data;
   $db = connectDb(e($data['domain']));
 
   $query = $db->insert(array('title'))
@@ -32,6 +31,38 @@ function addStories($data){
   }
   else{
     return 'Probleme d\'enregistrement de la storie';
+  }
+}
+
+function addAdmin($data){
+  $db = connectDb('lapin');
+
+  $query = $db->insert(array('name','login','pwd'))
+              ->into('admin')
+              ->values(array(e($data['name']),e($data['newLogin']),e($data['newPwd'])));
+
+  if($exe = $query->execute()){
+    if($data['sAdmin']){
+      $query = $db->select(array('id'))
+                  ->from('admin')
+                  ->where('name','=',$data['name'])->orWhere('login','=',$data['newLogin']);
+
+      $exe = $query->execute();
+
+      $data = $exe->fetch();
+
+      var_dump($data);
+      $query = $db->insert(array('id_admin'))
+                  ->into('s_admin')
+                  ->values(array($data['id']));
+      if($exe = $query->execute()){
+      echo 'S Admin enregistré';
+      }
+    }
+    else{
+
+      echo 'Admin enregistré';
+    }
   }
 }
  ?>

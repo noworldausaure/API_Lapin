@@ -75,6 +75,11 @@ $app->post('/user/getAdmin',function($request, $response, $args){
   return $response;
 })->add($mwLoginSadmin);
 
+$app->post('/user/addAdmin',function($request, $response, $args){
+  $response = addAdmin($request->getParsedBody());
+  return $reponse;
+});
+
 $app->post('/user/login',function($request, $response, $args){
   $response = isSadmin($request->getParsedBody());
   return $response;
