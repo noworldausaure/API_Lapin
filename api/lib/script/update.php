@@ -67,4 +67,17 @@ function updateStories($data){
   }
 }
 
+function updateAdmin($data){
+  $db = connectDb('lapin');
+
+  $query = $db->update(array('name' => e($data['newName'])))
+              ->set(array('login' => e($data['newLogin'])))
+              ->set(array('pwd' => e($data['newPwd'])))
+              ->table('admin')
+              ->where('id', '=', $data['id']);
+
+  if($exe = $query->execute()){
+    echo 'Admin mise à jour';
+  }
+}
  ?>

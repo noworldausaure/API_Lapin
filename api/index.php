@@ -145,7 +145,9 @@ $app->post('/update/stories', function($request,$response,$args){
   updateStories($request->getParsedBody());
 })->add($mwLoginAdmin);//OK
 
-
+$app->post('/admin/update',function($request, $response, $args){
+  updateAdmin($request->getParsedBody());
+})->add($mwLoginSadmin);
 $app->run();
 
 ?>
