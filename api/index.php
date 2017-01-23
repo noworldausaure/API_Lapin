@@ -70,12 +70,12 @@ $app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
 
 
 // USER
-$app->post('/user/getAdmin',function($request, $response, $args){
+$app->post('/admin/getAdmin',function($request, $response, $args){
   $response = getUser();
   return $response;
 })->add($mwLoginSadmin);
 
-$app->post('/user/addAdmin',function($request, $response, $args){
+$app->post('/admin/addAdmin',function($request, $response, $args){
   $response = addAdmin($request->getParsedBody());
   return $reponse;
 });
