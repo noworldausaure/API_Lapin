@@ -376,6 +376,34 @@ STRIPEUSE LAPIN.ORG API
 
 ---
 
+**TITLE**: add new admin
+
+**URL** : /user/addAdmin
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+  "login":"login",
+  "pwd":"password",
+  "name":"MichelAdmin",
+  "newLogin":"datAdmin",
+  "newPwd":"newPassword",
+  "sAdmin":false
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : SAdmin Login
+
+**NOTES** :
+- sAdmin is a bool but if not true is optional. In case of true this will add the new admin into the super admin(s_admin) table.
+
+---
 ## MIDDLEWARE
 Basic login MIDDLEWARE you have to post your login and password on all request who need admin right.
 ```php
