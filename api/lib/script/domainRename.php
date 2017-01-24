@@ -1,10 +1,6 @@
 <?php
   function renameDomain($data){
 
-    $user = 'root';
-    $password = 'maraudeurs';
-    $host = 'localhost';
-
     $infoForDump = mySqlDump();
     shell_exec('mysqldump ' .$infoForDump.' '.$data['domain'].' > '. __DIR__.'/dumpSqlDomain/renameDump.sql');
     //
