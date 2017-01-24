@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
 --
--- Host: localhost    Database: jesus
+-- Host: localhost    Database: machine
 -- ------------------------------------------------------
 -- Server version	5.7.17-0ubuntu0.16.04.1
 
@@ -43,7 +43,7 @@ CREATE TABLE `info` (
 
 LOCK TABLES `info` WRITE;
 /*!40000 ALTER TABLE `info` DISABLE KEYS */;
-INSERT INTO `info` VALUES ('awesomeRaptor','Gluby saint raptor','Alexando del raptor','the beautiful raptor making strips for you','raptor.jpg','raptor_pro.jpg','raptor_ban.jpg','raptor_pub.jpg','maraudeurs',1);
+INSERT INTO `info` VALUES ('jean','Gluby saint raptor','Alexando del raptor','the beautiful raptor making strips for you','raptor.jpg','raptor_pro.jpg','raptor_ban.jpg','raptor_pub.jpg','maraudeurs',1);
 /*!40000 ALTER TABLE `info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,4 +105,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-24 15:26:21
+-- Dump completed on 2017-01-24 16:12:51

@@ -7,7 +7,7 @@
 
 
 function newDomain($data){
-    $db = connectDb('lapin');
+    $db = connectToLapin();
 
   $query = $db->insert(array('short_name','large_name','author','favicon'))
 								->into('info')
@@ -32,9 +32,9 @@ function newDb($data){
 
   foreach ($sql as $key => $value) {
     if ($conn->query($sql[$key]) === TRUE) {
-      echo $key. " created successfully";
+      echo $key. " created successfully ";
     } else {
-      echo "Error creating ".$key. " : ". $conn->error;
+      echo " Error creating ".$key. " : ". $conn->error;
     }
   }
   $conn->close();
@@ -48,7 +48,7 @@ function addDomInfo($data){
               ->into('info')
               ->values(array(e($data['short_name']),e($data['large_name']),e($data['author']),e($data['favicon']),e($data['pwd'])));
   if($exe = $query->execute()){
-    echo 'Ok Domain Info Enregistrer';
+    echo ' Ok Domain Info Enregistrer ';
   }
 }
 

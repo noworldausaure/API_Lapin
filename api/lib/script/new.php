@@ -35,7 +35,7 @@ function addStories($data){
 }
 
 function addAdmin($data){
-  $db = connectDb('lapin');
+  $db = connectToLapin();
 
   $query = $db->insert(array('name','login','pwd'))
               ->into('admin')

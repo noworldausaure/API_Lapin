@@ -8,14 +8,14 @@
 
 // Update general INFO
   function updateGenInfo($data){
-    $db = connectDb('lapin');
+    $db = connectToLapin();
 
     $query = $db->update(array('short_name' => e($data['short_name'])))
                 ->set(array('large_name' => e($data['large_name'])))
                 ->set(array('author' => e($data['author'])))
                 ->set(array('favicon' => e($data['favicon'])))
                 ->table('info')
-                ->where('id','=', $data['id_GenInfo']);
+                ->where('short_name','=', $data['domain']);
     if($exe = $query->execute()){
       echo 'info general mise à jour';
     }
@@ -23,7 +23,10 @@
 
 // UPDATE DOMAINE INFO
   function updateInfo($data){
+    updateGenInfo($data);
+
     $db = connectDb($data['domain']);
+
 
     $query = $db->update(array('short_name' => e($data['short_name'])))
                 ->set(array('large_name' => e($data['large_name'])))
@@ -34,10 +37,13 @@
                 ->set(array('ban_picture' => e($data['ban_picture'])))
                 ->set(array('first_pub' => e($data['first_pub'])))
                 ->table('info')
-                ->where('id','=', $data['id_info']) ;
+                ->where('short_name','=', $data['domain']) ;
     if($exe = $query->execute()){
       echo 'info mise à jour';
-      updateGenInfo($data);
+      if($data['short_name'] != $data['domain']){
+        renameDomain($data) ;
+      }
+
     }
   }
 
@@ -68,7 +74,7 @@ function updateStories($data){
 }
 
 function updateAdmin($data){
-  $db = connectDb('lapin');
+  $db = connectToLapin();
 
   $query = $db->update(array('name' => e($data['newName'])))
               ->set(array('login' => e($data['newLogin'])))

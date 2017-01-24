@@ -22,7 +22,7 @@
   }
 
   function login($data){
-    $db = connectDb('lapin');
+    $db = connectToLapin();
 
     $query = $db->select()
                 ->from('admin')
@@ -41,7 +41,7 @@
 
   function isSadmin($data){
     if(login($data)){
-    $db = connectDb('lapin');
+    $db = connectToLapin();
     $query = $db->select(array('id'))
                 ->from('admin')
                 ->where('name','=',$data['login'])->orWhere('login','=',$data['login']);

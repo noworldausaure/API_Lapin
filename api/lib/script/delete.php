@@ -67,11 +67,11 @@
   }
 
   function deleteAdmin($data){
-    $db = connectDb('lapin');
+    $db = connectToLapin();
 
     $query = $db->delete()
                 ->from('admin')
-                ->where('id','=',$data['id']);  
+                ->where('id','=',$data['id']);
     if($exe = $query->execute()){
 
       $query = $db->delete()

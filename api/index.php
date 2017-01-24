@@ -12,11 +12,16 @@ require 'vendor/autoload.php';
 require 'sql/connect.php';
 require 'lib/loader.php';
 
+
 $app = new \Slim\App([
   'settings' => [
       'addContentLengthHeader' => false,
     ],
   ]);
+
+  $app->get('/',function($request, $response, $args){
+    Testo();
+  });//OK
 // *******************
 // * SETTINGS NEW DB *
 // *******************
