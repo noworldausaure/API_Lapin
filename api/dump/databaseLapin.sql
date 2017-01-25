@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
 --
 -- Host: localhost    Database: lapin
 -- ------------------------------------------------------
--- Server version	5.7.16-0ubuntu0.16.04.1
+-- Server version	5.7.17-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,22 +14,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
---
--- Table structure for table `info`
---
-
-DROP TABLE IF EXISTS `info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `info` (
-  `short_name` varchar(255) DEFAULT NULL,
-  `large_name` varchar(255) DEFAULT NULL,
-  `author` varchar(255) DEFAULT NULL,
-  `favicon` varchar(255) DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `admin`
@@ -57,13 +41,39 @@ LOCK TABLES `admin` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `s_user`
+-- Table structure for table `info`
+--
+
+DROP TABLE IF EXISTS `info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `info` (
+  `short_name` varchar(255) DEFAULT NULL,
+  `large_name` varchar(255) DEFAULT NULL,
+  `author` varchar(255) DEFAULT NULL,
+  `favicon` varchar(255) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `info`
+--
+
+LOCK TABLES `info` WRITE;
+/*!40000 ALTER TABLE `info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `s_admin`
 --
 
 DROP TABLE IF EXISTS `s_admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `s_user` (
+CREATE TABLE `s_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_admin` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -71,12 +81,12 @@ CREATE TABLE `s_user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `s_user`
+-- Dumping data for table `s_admin`
 --
 
 LOCK TABLES `s_admin` WRITE;
-/*!40000 ALTER TABLE `s_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `s_user` ENABLE KEYS */;
+/*!40000 ALTER TABLE `s_admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_admin` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -88,4 +98,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-12 15:28:06
+-- Dump completed on 2017-01-25 11:37:11
