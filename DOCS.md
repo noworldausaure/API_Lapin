@@ -18,7 +18,7 @@ STRIPEUSE LAPIN.ORG API
 
 - Configure [config-db.php.sample](https://github.com/noworldausaure/API_Lapin/blob/master/api/sql/config-db.php.sample)
 
-
+-Give to /lib/script/dumpSqlDomain www-data write acces
 ---
 
 
@@ -97,8 +97,6 @@ STRIPEUSE LAPIN.ORG API
     "large_name":"gluby on ice",
     "author":"Alexande droposki",
     "favicon":"favicon.jpg",
-    "login":"admin",
-    "pwd":"password"
 }
 ```
 
@@ -233,6 +231,7 @@ STRIPEUSE LAPIN.ORG API
 
 **Note** :
 - automatically change info from lapin.info and domain.info
+- if the new short_name is different than the domain name the request while update the info, create dump of the database, create a new database with the new short_name and destroy the old database;
 
 ---
 
@@ -356,7 +355,7 @@ STRIPEUSE LAPIN.ORG API
 
 **TITLE**: get list of admin
 
-**URL** : /user/getAdmin
+**URL** : /admin/getAdmin
 
 **METHOD**:POST
 
@@ -387,8 +386,6 @@ STRIPEUSE LAPIN.ORG API
 **DATA PARAMS**:
 ```json
 {
-  "login":"login",
-  "pwd":"password",
   "name":"MichelAdmin",
   "newLogin":"datAdmin",
   "newPwd":"newPassword",
@@ -416,8 +413,6 @@ STRIPEUSE LAPIN.ORG API
 **DATA PARAMS**:
 ```json
 {
-  "login":"login",
-  "pwd":"password",
   "id":1
 }
 ```
@@ -442,8 +437,6 @@ STRIPEUSE LAPIN.ORG API
 **DATA PARAMS**:
 ```json
     {
-     "login":"login",
-     "pwd":"password",
      "newName":"sayMyname",
      "newLogin":"getThat",
      "newPwd":"Ok",
