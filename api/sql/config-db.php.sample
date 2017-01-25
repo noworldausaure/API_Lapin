@@ -22,5 +22,22 @@ $pdo = new \Slim\PDO\Database($dsn, $usr, $pwd);
 
 return $pdo;
 }
+function connectToLapin(){
+    $dsn = 'mysql:host=host;dbname=lapin;charset=utf8';
+    $usr = 'user';
+    $pwd = 'password';
+
+    $pdo = new \Slim\PDO\Database($dsn, $usr, $pwd);
+
+    return $pdo;
+}
+
+function mySqlDump(){
+  $user = 'user';
+  $password = 'pwd';
+  $host = 'host';
+
+  return "--host=$host --user=$user --password=$password";
+}
 
  ?>

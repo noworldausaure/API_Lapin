@@ -9,7 +9,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 require 'vendor/autoload.php';
-require 'sql/connect.php';
+require 'sql/config-db.php';
 require 'lib/loader.php';
 
 
