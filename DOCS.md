@@ -341,7 +341,7 @@ STRIPEUSE LAPIN.ORG API
 **DATA PARAMS**:
 ```json
 {
-    "domain":"gluby"
+    "domain":"gluby",
     "id":1
 }
 ```
