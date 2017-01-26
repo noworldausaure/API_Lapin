@@ -18,7 +18,9 @@ STRIPEUSE LAPIN.ORG API
 
 - Configure [config-db.php.sample](https://github.com/noworldausaure/API_Lapin/blob/master/api/sql/config-db.php.sample)
 
--Give to /lib/script/dumpSqlDomain www-data write acces
+-Give to /lib/script/dumpSqlDomain www-data write access
+
+
 ---
 
 
