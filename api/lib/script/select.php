@@ -10,7 +10,7 @@
 // GET GENERAL INFO
 function getAllInfo(){
   $db = connectDb();
-  $query = $db->select()
+  $query = $db->select(array('short_name','large_name','author','favicon_name','id'))
               ->from('info')
               ->orderby('id');
   $exe = $query->execute();
