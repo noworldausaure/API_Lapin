@@ -430,7 +430,7 @@ STRIPEUSE LAPIN.ORG API
 
 **TITLE**: update Admin info
 
-**URL** : /update/admin
+**URL** : /admin/update
 
 **METHOD**:POST
 
