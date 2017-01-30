@@ -13,6 +13,7 @@ require 'script/newDomain.php';
 require 'script/select.php';
 require 'script/login.php';
 require 'script/domainRename.php';
+require 'database.php';
 require 'util.php';
 
  ?>

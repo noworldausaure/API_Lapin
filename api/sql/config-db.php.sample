@@ -1,43 +1,8 @@
 <?php
 
-function connectSql(){
-$dsn = 'host';
-$usr = 'user';
-$pwd = 'pwd';
-
-$conn = new mysqli($dsn, $usr, $pwd);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-return $conn;
-}
-
-function connectDb($db){
-$dsn = 'mysql:host=host;dbname='.$db.';charset=utf8';
 $usr = 'user';
 $pwd = 'password';
+$host = 'host';
+$dbAdmin = 'name database admin';
 
-$pdo = new \Slim\PDO\Database($dsn, $usr, $pwd);
-
-return $pdo;
-}
-
-function connectToLapin(){
-    $dsn = 'mysql:host=host;dbname=lapin;charset=utf8';
-    $usr = 'user';
-    $pwd = 'pwd';
-
-    $pdo = new \Slim\PDO\Database($dsn, $usr, $pwd);
-
-    return $pdo;
-}
-
-function mySqlDump(){
-  $user = 'user';
-  $password = 'pwd';
-  $host = 'host';
-
-  return "--host=$host --user=$user --password=$password";
-}
  ?>

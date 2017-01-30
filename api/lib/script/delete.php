@@ -67,7 +67,7 @@
   }
 
   function deleteAdmin($data){
-    $db = connectToLapin();
+    $db = connectDb();
 
     $query = $db->delete()
                 ->from('admin')

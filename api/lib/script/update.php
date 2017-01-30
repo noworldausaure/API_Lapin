@@ -8,7 +8,7 @@
 
 // Update general INFO
   function updateGenInfo($data){
-    $db = connectToLapin();
+    $db = connectDb();
 
     $query = $db->update(array('short_name' => e($data['short_name'])))
                 ->set(array('large_name' => e($data['large_name'])))
@@ -74,7 +74,7 @@ function updateStories($data){
 }
 
 function updateAdmin($data){
-  $db = connectToLapin();
+  $db = connectDb();
 
   $query = $db->update(array('name' => e($data['newName'])))
               ->set(array('login' => e($data['newLogin'])))

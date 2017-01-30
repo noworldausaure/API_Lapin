@@ -9,7 +9,7 @@
 
 // GET GENERAL INFO
 function getAllInfo(){
-  $db = connectToLapin();
+  $db = connectDb();
   $query = $db->select()
               ->from('info')
               ->orderby('id');
@@ -93,7 +93,7 @@ function getStoriesByDomain($dom,$id){
 //END STORIES
 
 function getAdmin(){
-  $db = connectToLapin();
+  $db = connectDb();
 
   $query = $db->select()
               ->from('admin')

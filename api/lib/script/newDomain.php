@@ -7,7 +7,7 @@
 
 
 function newDomain($data){
-    $db = connectToLapin();
+    $db = connectDb();
 
   $query = $db->insert(array('short_name','large_name','author','favicon'))
 								->into('info')

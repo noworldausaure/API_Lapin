@@ -19,9 +19,6 @@ $app = new \Slim\App([
     ],
   ]);
 
-  $app->get('/',function($request, $response, $args){
-    Testo();
-  });//OK
 // *******************
 // * SETTINGS NEW DB *
 // *******************
