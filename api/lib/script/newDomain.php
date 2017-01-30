@@ -9,9 +9,9 @@
 function newDomain($data){
     $db = connectDb();
 
-  $query = $db->insert(array('short_name','large_name','author','favicon'))
+  $query = $db->insert(array('short_name','large_name','author','favicon','favicon_name'))
 								->into('info')
-								->values(array($data['short_name'],e($data['large_name']),e($data['author']),e($data['favicon'])));
+								->values(array($data['short_name'],e($data['large_name']),e($data['author']),e($data['favicon']),e($data['favicon_name'])));
   if($exe = $query->execute()){
     newDb($data);
     addDomInfo($data);
@@ -25,9 +25,30 @@ function newDb($data){
   $conn = connectSql();
 
   $sql['database'] = "CREATE DATABASE ".$name;
-  $sql['info'] = "CREATE TABLE " .$name. ".info (short_name varchar(255),large_name varchar(255),author varchar(255),description varchar(255),favicon varchar(255),profil_picture varchar(255),ban_picture varchar(255),first_pub varchar(255),pwd varchar(255),id int primary key AUTO_INCREMENT)";
-  $sql['stories'] = "CREATE TABLE ".$name. ".stories (title varchar(255),id int primary key AUTO_INCREMENT)";
-  $sql['strips'] = "CREATE TABLE " .$name. ".strips (title varchar(255),file varchar(255), story_id int, date datetime, id int primary key AUTO_INCREMENT)";
+  $sql['info'] = "CREATE TABLE " .$name. ".info (short_name varchar(255),"
+                                                ."large_name varchar(255),"
+                                                ."author varchar(255),"
+                                                ."description varchar(255),"
+                                                ."favicon MEDIUMTEXT,"
+                                                ."favicon_name varchar(250),"
+                                                ."profil_picture MEDIUMTEXT,"
+                                                ."profil_picture_name varchar(250),"
+                                                ."ban_picture MEDIUMTEXT,"
+                                                ."ban_picture_name varchar(255),"
+                                                ."first_pub MEDIUMTEXT,"
+                                                ."first_pub_name varchar(255),"
+                                                ."pwd varchar(255),"
+                                                ."id int primary key AUTO_INCREMENT)";
+
+  $sql['stories'] = "CREATE TABLE ".$name. ".stories (title varchar(255),"
+                                            ."id int primary key AUTO_INCREMENT)";
+
+  $sql['strips'] = "CREATE TABLE " .$name. ".strips (title varchar(255),"
+                                          ."file MEDIUMTEXT,"
+                                          ."file_name varchar(255),"
+                                          ."story_id int,"
+                                          ."date datetime,"
+                                          ." id int primary key AUTO_INCREMENT)";
 
 
   foreach ($sql as $key => $value) {
@@ -44,9 +65,9 @@ function newDb($data){
 function addDomInfo($data){
   $db = connectDb($data['short_name']);
 
-  $query = $db->insert(array('short_name','large_name','author','favicon','pwd'))
+  $query = $db->insert(array('short_name','large_name','author','favicon','favicon_name','pwd'))
               ->into('info')
-              ->values(array(e($data['short_name']),e($data['large_name']),e($data['author']),e($data['favicon']),e($data['pwd'])));
+              ->values(array(e($data['short_name']),e($data['large_name']),e($data['author']),e($data['favicon']),e($data['favicon_name']),e($data['pwd'])));
   if($exe = $query->execute()){
     echo ' Ok Domain Info Enregistrer ';
   }
