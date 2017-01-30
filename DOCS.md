@@ -20,6 +20,10 @@ STRIPEUSE LAPIN.ORG API
 
 -Give to /lib/script/dumpSqlDomain www-data write access
 
+**NOTES**
+ - The norme md5 is use for password he has to be generate by the client.
+ - All base64file value are image encode on base64 by the client.
+
 
 ---
 
@@ -98,7 +102,8 @@ STRIPEUSE LAPIN.ORG API
     "short_name":"gluby",
     "large_name":"gluby on ice",
     "author":"Alexande droposki",
-    "favicon":"favicon.jpg",
+    "favicon":"base64file",
+    "favicon_name":"favicon.jpg"
 }
 ```
 
@@ -170,7 +175,8 @@ STRIPEUSE LAPIN.ORG API
 {
     "domain":"gluby",
     "title":"an awesomestrips",
-    "file":"awesomestrips.jpg",
+    "file":"base64file",
+    "file_name":"strips.jpg",
     "date":"2015-05-19 19:05:15",
     "story_id":1
 }
@@ -219,11 +225,15 @@ STRIPEUSE LAPIN.ORG API
     "short_name":"glubyraptor",
     "large_name":"Gluby saint raptor",
     "author":"Alexando del raptor",
-    "favicon":"raptor.jpg",
+    "favicon":"base64file",
+    "favicon_name":"raptor.jpg",
     "description":"the beautiful raptor making strips for you",
-    "profil_picture":"raptor_pro.jpg",
-    "ban_picture":"raptor_ban.jpg",
-    "first_pub":"raptor_pub.jpg"
+    "profil_picture":"base64file",
+    "profil_picture_name":"raptor.pro.jpg"
+    "ban_picture":"base64file",
+    "ban_picture_name":"raptor.ban.jpg",
+    "first_pub":"base64file",
+    "first_pub_name":"raptor.pub.jpg"
 }
 ```
 
@@ -250,7 +260,8 @@ STRIPEUSE LAPIN.ORG API
 {
     "domain":"gluby",
     "title":"this strips",
-    "file":"newstrips.jpg",
+    "file":"base64file",
+    "file_name":"newStrips.jpg",
     "story_id":1,
     "id":2
 }

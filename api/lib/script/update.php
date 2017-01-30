@@ -32,16 +32,21 @@
                 ->set(array('large_name' => e($data['large_name'])))
                 ->set(array('author' => e($data['author'])))
                 ->set(array('favicon' => e($data['favicon'])))
+                ->set(array('favicon_name' => e($data['favicon_name'])))
                 ->set(array('description' => e($data['description'])))
                 ->set(array('profil_picture' => e($data['profil_picture'])))
+                ->set(array('profil_picture_name' => e($data['profil_picture_name'])))
                 ->set(array('ban_picture' => e($data['ban_picture'])))
+                ->set(array('ban_picture_name' => e($data['ban_picture'])))
                 ->set(array('first_pub' => e($data['first_pub'])))
+                ->set(array('first_pub_name' => e($data['first_pub_name'])))
+
                 ->table('info')
                 ->where('short_name','=', $data['domain']) ;
     if($exe = $query->execute()){
       echo 'info mise à jour';
       if($data['short_name'] != $data['domain']){
-        renameDomain($data) ;
+        renameDomain($data);
       }
 
     }
@@ -53,6 +58,7 @@ function updateStrips($data){
 
   $query = $db->update(array('title' => e($data['title'])))
               ->set(array('file' => e($data['file'])))
+              ->set(array('file_name' => e($data['file_name'])))
               ->set(array('story_id' => e($data['story_id'])))
               ->table('strips')
               ->where('id', '=',$data['id']);

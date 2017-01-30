@@ -7,11 +7,11 @@
 
 
 function addStrip($data){
-  $db = connectDb(e($data['domain']));
+ $db = connectDb($data['domain']);
 
-  $query = $db->insert(array('title','file','story_id','date'))
+  $query = $db->insert(array('title','file','file_name','story_id','date'))
               ->into('strips')
-              ->values(array(e($data['title']),e($data['file']),e($data['story_id']),e($data['date'])));
+              ->values(array(e($data['title']),e($data['file']),e($data['file_name']),e($data['story_id']),e($data['date'])));
   if($exe = $query->execute()){
     return 'Strips correctement Enregistrer';
   }

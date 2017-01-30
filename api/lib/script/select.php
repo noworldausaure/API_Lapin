@@ -23,7 +23,7 @@ function getAllInfo(){
 // GET INFO ON DOMAINE
 function getInfoByDomain($dom){
   $db = connectDb($dom);
-  $query = $db->select()
+  $query = $db->select(array('short_name','large_name','author','description','favicon_name','profil_picture_name','ban_picture_name','first_pub_name','id'))
               ->from('info');
   $exe = $query->execute();
 
