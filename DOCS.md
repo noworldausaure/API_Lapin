@@ -262,6 +262,7 @@ STRIPEUSE LAPIN.ORG API
     "title":"this strips",
     "file":"base64file",
     "file_name":"newStrips.jpg",
+    "date":"2015-05-19 19:05:15",
     "story_id":1,
     "id":2
 }
