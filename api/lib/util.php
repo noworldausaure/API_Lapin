@@ -13,4 +13,13 @@
     }
   }
 
+  function isMd5($pwd){
+    if(strlen($pwd) == 32){
+      echo strlen($pwd);
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
  ?>

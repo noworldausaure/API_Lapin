@@ -10,7 +10,7 @@
 // GET GENERAL INFO
 function getAllInfo(){
   $db = connectDb();
-  $query = $db->select(array('short_name','large_name','author','favicon_name','id'))
+  $query = $db->select()
               ->from('info')
               ->orderby('id');
   $exe = $query->execute();
@@ -19,11 +19,10 @@ function getAllInfo(){
 
   echo ifEmpty($data);
 }
-
 // GET INFO ON DOMAINE
 function getInfoByDomain($dom){
   $db = connectDb($dom);
-  $query = $db->select(array('short_name','large_name','author','description','favicon_name','profil_picture_name','ban_picture_name','first_pub_name','id'))
+  $query = $db->select()
               ->from('info');
   $exe = $query->execute();
 

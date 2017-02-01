@@ -22,6 +22,7 @@
   }
 
   function login($data){
+    if(isMd5($data['pwd'])){
     $db = connectDb();
 
     $query = $db->select()
@@ -38,6 +39,10 @@
       echo 'password/login incorrect';
     }
   }
+  else {
+    echo 'Mauvais format de mots de passe';
+  }
+}
 
   function isSadmin($data){
     if(login($data)){
