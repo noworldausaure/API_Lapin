@@ -71,6 +71,9 @@ $app->get('/strips/{domain}[/{id}]',function($request, $response, $args){
 $app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
   getStoriesByDomain($args['domain'],$args['id']);
 });//OK
+$app->get('/strip/stories/{domain}/{id}',function($request, $response, $args){
+  getStripsByStories($args['domain'],$args['id']);
+});
 
 
 

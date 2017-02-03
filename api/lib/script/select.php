@@ -104,4 +104,17 @@ function getAdmin(){
 
   echo json_encode($data);
 }
+
+function getStripsByStories($dom,$id){
+  $db = connectDb($dom);
+  $query = $db->select()
+              ->from('strips')
+              ->where('story_id','=',$id)
+              ->orderby('id');
+  $exe = $query->execute();
+
+  $data = $exe->fetchAll();
+
+  echo ifEmpty($data);
+}
  ?>

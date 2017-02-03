@@ -40,7 +40,6 @@
                 ->set(array('ban_picture_name' => e($data['ban_picture'])))
                 ->set(array('first_pub' => e($data['first_pub'])))
                 ->set(array('first_pub_name' => e($data['first_pub_name'])))
-
                 ->table('info')
                 ->where('short_name','=', $data['domain']) ;
     if($exe = $query->execute()){
