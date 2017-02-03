@@ -72,13 +72,29 @@ STRIPEUSE LAPIN.ORG API
 
 ---
 
-**TITLE**: Get strips from specific domain
+**TITLE**: Get stories from specific domain
 
 **URL** : /stories/:domain/:id
 
 **METHOD**:GET
 
 **URL PARAMS**: Required = [domain] & Optional = [id]
+
+**SUCCESS REPONSE** : 200
+
+**ERROR REPONSE** : 404
+
+**Note** : return one stories if id is set
+
+---
+
+**TITLE**: Get strips from specific storie
+
+**URL** : /strips/stories/:domain/:id
+
+**METHOD**:GET
+
+**URL PARAMS**: Required = [domain] & [id]
 
 **SUCCESS REPONSE** : 200
 
