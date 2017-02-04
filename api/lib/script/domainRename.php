@@ -1,8 +1,8 @@
 <?php
-  function renameDomain($data){
+  function renameDomain($data, $dom){
 
     $infoForDump = mySqlDump();
-    shell_exec('mysqldump ' .$infoForDump.' '.$data['domain'].' > '. __DIR__.'/dumpSqlDomain/renameDump.sql');
+    shell_exec('mysqldump ' .$infoForDump.' '.$dom.' > '. __DIR__.'/dumpSqlDomain/renameDump.sql');
     //
     $db = connectSql();
     //
@@ -15,7 +15,7 @@
     }
     system('cat ' . __DIR__. '/dumpSqlDomain/renameDump.sql | mysql '.$infoForDump.' --database='.$data['short_name']);
     //
-    $sql = 'DROP DATABASE '.$data['domain'];
+    $sql = 'DROP DATABASE '.$dom;
     //
     if ($db->query($sql) === TRUE) {
       echo "db erase successfully";

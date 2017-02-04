@@ -23,32 +23,27 @@
 
 // UPDATE DOMAINE INFO
   function updateInfo($data){
+
     updateGenInfo($data);
 
-    $db = connectDb($data['domain']);
+    $domain = $data['domain'];
+    $db = connectDb($domain);
 
+    unset($data['domain']);
+    unset($data['login']);
+    unset($data['pwd']);
 
-    $query = $db->update(array('short_name' => e($data['short_name'])))
-                ->set(array('large_name' => e($data['large_name'])))
-                ->set(array('author' => e($data['author'])))
-                ->set(array('favicon' => e($data['favicon'])))
-                ->set(array('favicon_name' => e($data['favicon_name'])))
-                ->set(array('description' => e($data['description'])))
-                ->set(array('profil_picture' => e($data['profil_picture'])))
-                ->set(array('profil_picture_name' => e($data['profil_picture_name'])))
-                ->set(array('ban_picture' => e($data['ban_picture'])))
-                ->set(array('ban_picture_name' => e($data['ban_picture'])))
-                ->set(array('first_pub' => e($data['first_pub'])))
-                ->set(array('first_pub_name' => e($data['first_pub_name'])))
-                ->table('info')
-                ->where('short_name','=', $data['domain']) ;
-    if($exe = $query->execute()){
-      echo 'info mise à jour';
-      if($data['short_name'] != $data['domain']){
-        renameDomain($data);
+      foreach ($data as $key => $value) {
+        $query = $db->update(array($key => e($value)))
+                    ->table('info')
+                    ->where('short_name','=',$domain);
+        if($exe = $query->execute()){
+          echo $key . ' mise à jour ';
+        }
       }
-
-    }
+      if($data['short_name'] != $domain){
+        renameDomain($data, $domain);
+      }
   }
 
 //UPDATE STRIPS
