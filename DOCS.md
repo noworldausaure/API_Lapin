@@ -245,7 +245,7 @@ STRIPEUSE LAPIN.ORG API
     "favicon_name":"raptor.jpg",
     "description":"the beautiful raptor making strips for you",
     "profil_picture":"base64file",
-    "profil_picture_name":"raptor.pro.jpg"
+    "profil_picture_name":"raptor.pro.jpg",
     "ban_picture":"base64file",
     "ban_picture_name":"raptor.ban.jpg",
     "first_pub":"base64file",
