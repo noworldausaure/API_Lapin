@@ -7,6 +7,7 @@
 
 
 function newDomain($data){
+
     $db = connectDb();
 
   $query = $db->insert(array('short_name','large_name','author','favicon','favicon_name'))
@@ -15,8 +16,8 @@ function newDomain($data){
   if($exe = $query->execute()){
     newDb($data);
     addDomInfo($data);
+    }
   }
-}
 
 // CREATING NEW DOMAINE DB
 function newDb($data){
