@@ -51,8 +51,7 @@ CREATE TABLE `info` (
   `short_name` varchar(255) DEFAULT NULL,
   `large_name` varchar(255) DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
-  `favicon` mediumtext,
-  `favicon_name` varchar(250) DEFAULT NULL,
+  `favicon` BLOB,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
