@@ -374,6 +374,34 @@ STRIPEUSE LAPIN.ORG API
 
 ---
 
+
+**TITLE**: update pub
+
+**URL** : /update/pub
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+	"id":1,
+    "name":"Pub1",
+	"file":"file1",
+	"link":"oKkk"
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : Admin Login
+
+**NOTE** : - domain is optional if no domain is set will update on the lapin
+
+---
+
 **TITLE**: drop database domain
 
 **URL** : /delete/domain
@@ -419,6 +447,7 @@ STRIPEUSE LAPIN.ORG API
 - you can add the 'withStrip' params(Bool) who with delete all strips affiliate at the id send
 
 ---
+
 **TITLE**: delete strips
 
 **URL** : /delete/strips
@@ -441,6 +470,31 @@ STRIPEUSE LAPIN.ORG API
 
 **Note**:
 - you can add the 'all' params(Bool) who with truncate the table strips of the domain specify
+
+----
+
+**TITLE**: delete pub
+
+**URL** : /delete/pub
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+    "domain":"gluby",
+    "id":1
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : Admin Login
+
+**Note**:
+- domain is optional if is not set will delete pub from lapin
 
 ----
 
