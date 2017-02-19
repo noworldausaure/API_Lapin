@@ -27,13 +27,9 @@ CREATE TABLE `info` (
   `author` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `favicon` BLOB,
-  `favicon_name` varchar(250) DEFAULT NULL,
   `profil_picture` BLOB,
-  `profil_picture_name` varchar(250) DEFAULT NULL,
   `ban_picture` BLOB,
-  `ban_picture_name` varchar(255) DEFAULT NULL,
   `first_pub` BLOB,
-  `first_pub_name` varchar(255) DEFAULT NULL,
   `pwd` varchar(255) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
@@ -74,7 +70,6 @@ DROP TABLE IF EXISTS `strips`;
 CREATE TABLE `strips` (
   `title` varchar(255) DEFAULT NULL,
   `file` BLOB,
-  `file_name` varchar(255) DEFAULT NULL,
   `story_id` int(11) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,

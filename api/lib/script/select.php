@@ -50,7 +50,7 @@ function getStripsByDomain($dom,$id){
   $db = connectDb($dom);
   $query = $db->select()
               ->from('strips')
-              ->orderby('date');
+              ->orderby('date','DESC');
 
   $exe = $query->execute();
 
@@ -110,7 +110,7 @@ function getStripsByStories($dom,$id){
   $query = $db->select()
               ->from('strips')
               ->where('story_id','=',$id)
-              ->orderby('id');
+              ->orderby('date','DESC');
   $exe = $query->execute();
 
   $data = $exe->fetchAll();

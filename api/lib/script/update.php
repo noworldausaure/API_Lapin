@@ -53,7 +53,6 @@ function updateStrips($data){
 if(storyIdExist($db,$data)){
     $query = $db->update(array('title' => e($data['title'])))
                 ->set(array('file' => e($data['file'])))
-                ->set(array('file_name' => e($data['file_name'])))
                 ->set(array('story_id' => e($data['story_id'])))
                 ->table('strips')
                 ->where('id', '=',$data['id']);
