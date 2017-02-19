@@ -117,4 +117,49 @@ function getStripsByStories($dom,$id){
 
   echo ifEmpty($data);
 }
+
+function getLapinPub($id){
+  $db = connectDb();
+
+  if(isset($id)){
+    $query = $db->select()
+                ->from('pub')
+                ->where('id','=',$id);
+    $exe = $query->execute();
+
+    $data = $exe->fetchAll();
+    echo ifEmpty($data);
+  }
+  else{
+    $query = $db->select()
+                ->from('pub')
+                ->orderby('id');
+    $exe = $query->execute();
+
+    $data = $exe->fetchAll();
+    echo ifEmpty($data);
+  }
+}
+
+function getDomainPub($dom,$id){
+  $db = connectDb($dom);
+  if(isset($id)){
+    $query = $db->select()
+                ->from('pub')
+                ->where('id','=',$id);
+    $exe = $query->execute();
+
+    $data = $exe->fetchAll();
+    echo ifEmpty($data);
+  }
+  else{
+    $query = $db->select()
+                ->from('pub')
+                ->orderby('id');
+    $exe = $query->execute();
+
+    $data = $exe->fetchAll();
+    echo ifEmpty($data);
+  }
+}
  ?>

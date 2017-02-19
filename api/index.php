@@ -75,11 +75,11 @@ $app->get('/strips/stories/{domain}/{id}',function($request, $response, $args){
   getStripsByStories($args['domain'],$args['id']);
 });
 // PUB
-$app->get('pub/[/{id}]', function($request, $response, $arges){
-  getPub();
+$app->get('/pub/general[/{id}]', function($request, $response, $arges){
+  getLapinPub($args['id']);
 });
-$app->get('pub/{domain}[/{id}]', function($request, $response, $arges){
-  getPub();
+$app->get('/pub/domain/{domain}[/{id}]', function($request, $response, $arges){
+  getDomainPub($args['domain'],$args['pub']);
 });
 
 
@@ -150,7 +150,7 @@ $app->post('/admin/delete',function($request, $response, $args){
   deleteAdmin($request->getParsedbody());
 })->add($mwLoginSadmin);
 //PUB
-$app->post('/pub',function($request, $response, $args){
+$app->post('/pub/delete',function($request, $response, $args){
   deletePub();
 })->add ($mwLoginAdmin);//OK
 
