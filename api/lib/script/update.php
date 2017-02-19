@@ -87,4 +87,22 @@ function updateAdmin($data){
     echo 'Admin mise à jour';
   }
 }
+
+function updatePub($data){
+  if(isset($data['domain'])){
+    $db = connectDb($data['domain']);
+  } else {
+    $db = connectDb();
+  }
+
+  $query = $db->update(array('name' => e($data['name'])))
+              ->set(array('file' => e($data['file'])))
+              ->set(array('link' => e($data['link'])))
+              ->table('pub')
+              ->where('id', '=', $data['id']);
+
+  if($exe = $query->execute()){
+    echo 'Pub mise à jour';
+  }
+}
  ?>

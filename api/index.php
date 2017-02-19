@@ -176,9 +176,10 @@ $app->post('/update/stories', function($request,$response,$args){
 $app->post('/admin/update',function($request, $response, $args){
   updateAdmin($request->getParsedBody());
 })->add($mwLoginSadmin);
-$app->run();
 //PUB
 $app->post('/update/pub',function($request,$response,$args){
-  updatePub();
+  updatePub($request->getParsedBody());
 })->add($mwLoginAdmin);
+
+$app->run();
 ?>
