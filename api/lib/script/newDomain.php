@@ -40,12 +40,16 @@ function newDb($data){
   $sql['stories'] = "CREATE TABLE ".$name. ".stories (title varchar(255),"
                                             ."id int primary key AUTO_INCREMENT)";
 
-  $sql['strips'] = "CREATE TABLE " .$name. ".strips (title varchar(255),"
+  $sql['strips'] = "CREATE TABLE ".$name. ".strips (title varchar(255),"
                                           ."file BLOB,"
                                           ."story_id int,"
                                           ."date datetime,"
                                           ." id int primary key AUTO_INCREMENT)";
 
+  $sql['pub'] = "CREATE TABLE " .$name.".pub (id int primary key AUTO_INCREMENT,"
+                                       ."name varchar(150),"
+                                       ."file BLOB,"
+                                       ."link varchar(350))";
 
   foreach ($sql as $key => $value) {
     if ($conn->query($sql[$key]) === TRUE) {

@@ -75,9 +75,12 @@ $app->get('/strips/stories/{domain}/{id}',function($request, $response, $args){
   getStripsByStories($args['domain'],$args['id']);
 });
 // PUB
-$app->get('pub/[/{domain}][/{id}]', function($request, $response, $arges){
+$app->get('pub/[/{id}]', function($request, $response, $arges){
   getPub();
-})
+});
+$app->get('pub/{domain}[/{id}]', function($request, $response, $arges){
+  getPub();
+});
 
 
 // **********
@@ -148,7 +151,7 @@ $app->post('/admin/delete',function($request, $response, $args){
 })->add($mwLoginSadmin);
 //PUB
 $app->post('/pub',function($request, $response, $args){
-  deletePub()
+  deletePub();
 })->add ($mwLoginAdmin);//OK
 
 //**********
@@ -176,6 +179,6 @@ $app->post('/admin/update',function($request, $response, $args){
 $app->run();
 //PUB
 $app->post('/update/pub',function($request,$response,$args){
-  updatePub()
-})->add($mwLoginAdmin)
+  updatePub();
+})->add($mwLoginAdmin);
 ?>

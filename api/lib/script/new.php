@@ -67,4 +67,24 @@ function addAdmin($data){
     }
   }
 }
+
+function addPub($data){
+  if(isset($data['domain'])){
+    $db = connectDb($data['domain']);
+  }
+  else{
+    $db = connectDb();
+  }
+
+  $query = $db->insert(array('name','file','link'))
+              ->into('pub')
+              ->values(array($data['name'],$data['file'],$data['link']));
+
+  if($exe = $query->execute()){
+    echo 'Pub enregistrer';
+  }else{
+    echo 'Probleme d\'enregistrement';
+  }
+
+}
  ?>
