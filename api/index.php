@@ -74,8 +74,10 @@ $app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
 $app->get('/strips/stories/{domain}/{id}',function($request, $response, $args){
   getStripsByStories($args['domain'],$args['id']);
 });
-
-
+// PUB
+$app->get('pub/[/{domain}][/{id}]', function($request, $response, $arges){
+  getPub();
+})
 
 
 // **********
@@ -117,6 +119,10 @@ $app->post('/stories/newStories',function($request, $response, $args){
   $response = addStories($request->getParsedBody());
   return $response;
 })->add ($mwLoginAdmin);//OK
+// PUB
+$app->post('/pub/addPub/',function($request,$response,$args){
+  addPub($request->getParsedBody());
+})->add($mwLoginAdmin);//OK
 
 //**********
 //* DELETE *
@@ -140,6 +146,11 @@ $app->post('/delete/strips',function($request, $response, $args){
 $app->post('/admin/delete',function($request, $response, $args){
   deleteAdmin($request->getParsedbody());
 })->add($mwLoginSadmin);
+//PUB
+$app->post('/pub',function($request, $response, $args){
+  deletePub()
+})->add ($mwLoginAdmin);//OK
+
 //**********
 //* UPDATE *
 //**********
@@ -163,5 +174,8 @@ $app->post('/admin/update',function($request, $response, $args){
   updateAdmin($request->getParsedBody());
 })->add($mwLoginSadmin);
 $app->run();
-
+//PUB
+$app->post('/update/pub',function($request,$response,$args){
+  updatePub()
+})->add($mwLoginAdmin)
 ?>
