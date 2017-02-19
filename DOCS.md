@@ -241,7 +241,7 @@ STRIPEUSE LAPIN.ORG API
 	"domain":"gluby",
     "name":"namepub",
 	"file":"base64file",
-	"link":"oK",
+	"link":"oK"
 
 }
 ```
