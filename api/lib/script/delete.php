@@ -82,4 +82,20 @@
       echo 'Admin supprimer';
     }
   }
+
+  function deletePub($data){
+
+    if(isset($data['domain'])){
+      $db = connectDb($data['domain']);
+    }
+    else{
+      $db = connectDb();
+    }
+    $query = $db->delete()
+                ->from('pub')
+                ->where('id','=',$data['id']);
+    if($exe = $query->execute()){
+      echo 'Strips supprimé';
+    }
+  }
  ?>

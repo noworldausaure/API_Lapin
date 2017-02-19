@@ -151,7 +151,7 @@ $app->post('/admin/delete',function($request, $response, $args){
 })->add($mwLoginSadmin);
 //PUB
 $app->post('/pub/delete',function($request, $response, $args){
-  deletePub();
+  deletePub($request->getParsedbody());
 })->add ($mwLoginAdmin);//OK
 
 //**********
