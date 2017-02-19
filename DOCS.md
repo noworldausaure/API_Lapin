@@ -104,6 +104,39 @@ STRIPEUSE LAPIN.ORG API
 
 ---
 
+
+**TITLE**: Get pub from specific domain
+
+**URL** : /pub/domain/:domain/:id
+
+**METHOD**:GET
+
+**URL PARAMS**: Required = [domain] & Optional = [id]
+
+**SUCCESS REPONSE** : 200
+
+**ERROR REPONSE** : 404
+
+**Note** : return one pub if id is set
+
+---
+
+**TITLE**: Get pub from lapin
+
+**URL** : /pub/general/:domain/:id
+
+**METHOD**:GET
+
+**URL PARAMS**: Required = [domain] & Optional = [id]
+
+**SUCCESS REPONSE** : 200
+
+**ERROR REPONSE** : 404
+
+**Note** : return one pub if id is set
+
+---
+
 **TITLE**: Create new domain (need admin right)
 
 **URL** : /newDomain
