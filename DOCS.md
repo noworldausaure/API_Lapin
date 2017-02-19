@@ -226,6 +226,34 @@ STRIPEUSE LAPIN.ORG API
 
 ---
 
+
+**TITLE**: add pub
+
+**URL** : /pub/addPub/
+
+**METHOD**:POST
+
+**URL PARAMS**: None
+
+**DATA PARAMS**:
+```json
+{
+	"domain":"gluby",
+    "name":"namepub",
+	"file":"base64file",
+	"link":"oK",
+
+}
+```
+
+**SUCCESS REPONSE** : 200
+
+**MIDDLEWARE** : Admin Login
+
+**NOTE**: - Domain is optional if you don't set it i will add the pub on the lapin table.
+
+---
+
 **TITLE**: update info
 
 **URL** : /update/info
