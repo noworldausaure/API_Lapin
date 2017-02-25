@@ -75,11 +75,11 @@ $app->get('/strips/stories/{domain}/{id}',function($request, $response, $args){
   getStripsByStories($args['domain'],$args['id']);
 });
 // PUB
-$app->get('/pub/general[/{id}]', function($request, $response, $arges){
+$app->get('/pub/general[/{id}]', function($request, $response, $args){
   getLapinPub($args['id']);
 });
-$app->get('/pub/domain/{domain}[/{id}]', function($request, $response, $arges){
-  getDomainPub($args['domain'],$args['pub']);
+$app->get('/pub/domain/{domain}', function($request, $response, $args){
+  getDomainPub($args['domain']);
 });
 
 

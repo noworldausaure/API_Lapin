@@ -128,38 +128,30 @@ function getLapinPub($id){
     $exe = $query->execute();
 
     $data = $exe->fetchAll();
-    echo ifEmpty($data);
+    echo json_encode($data);
   }
   else{
     $query = $db->select()
                 ->from('pub')
                 ->orderby('id');
+
     $exe = $query->execute();
 
     $data = $exe->fetchAll();
-    echo ifEmpty($data);
+    echo json_encode($data);
   }
 }
 
-function getDomainPub($dom,$id){
-  $db = connectDb($dom);
-  if(isset($id)){
-    $query = $db->select()
-                ->from('pub')
-                ->where('id','=',$id);
-    $exe = $query->execute();
-
-    $data = $exe->fetchAll();
-    echo ifEmpty($data);
-  }
-  else{
+function getDomainPub($dom){
+    $db = connectDb($dom);
     $query = $db->select()
                 ->from('pub')
                 ->orderby('id');
+
     $exe = $query->execute();
 
     $data = $exe->fetchAll();
-    echo ifEmpty($data);
-  }
+
+    echo json_encode($data);
 }
  ?>
