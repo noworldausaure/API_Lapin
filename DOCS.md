@@ -24,7 +24,7 @@ STRIPEUSE LAPIN.ORG API
  - The norme md5 is use for password he has to be generate by the client.
  - All base64file value are image encode on base64 by the client.
  - Default admin are 'root','root'
-
+ - The domainDump are a exemple and lapin contain basic exemple data to use it 
 ---
 
 
