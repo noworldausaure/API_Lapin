@@ -151,8 +151,7 @@ STRIPEUSE LAPIN.ORG API
     "short_name":"gluby",
     "large_name":"gluby on ice",
     "author":"Alexande droposki",
-    "favicon":"base64file",
-    "favicon_name":"favicon.jpg"
+    "favicon":"base64file"
 }
 ```
 
@@ -225,7 +224,6 @@ STRIPEUSE LAPIN.ORG API
     "domain":"gluby",
     "title":"an awesomestrips",
     "file":"base64file",
-    "file_name":"strips.jpg",
     "date":"2015-05-19 19:05:15",
     "story_id":1
 }
@@ -303,12 +301,9 @@ STRIPEUSE LAPIN.ORG API
     "large_name":"Gluby saint raptor",
     "author":"Alexando del raptor",
     "favicon":"base64file",
-    "favicon_name":"raptor.jpg",
     "description":"the beautiful raptor making strips for you",
     "profil_picture":"base64file",
-    "profil_picture_name":"raptor.pro.jpg",
     "ban_picture":"base64file",
-    "ban_picture_name":"raptor.ban.jpg",
     "first_pub":"base64file",
     "first_pub_name":"raptor.pub.jpg"
 }
@@ -338,7 +333,6 @@ STRIPEUSE LAPIN.ORG API
     "domain":"gluby",
     "title":"this strips",
     "file":"base64file",
-    "file_name":"newStrips.jpg",
     "date":"2015-05-19 19:05:15",
     "story_id":1,
     "id":2
