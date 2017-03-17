@@ -14,95 +14,35 @@ function getAllInfo(){
               ->from('info')
               ->orderby('id');
   $exe = $query->execute();
-
   $data = $exe->fetchAll();
-
   echo ifEmpty($data);
 }
+
 // GET INFO ON DOMAINE
 function getInfoByDomain($dom){
   $db = connectDb($dom);
   $query = $db->select()
               ->from('info');
   $exe = $query->execute();
-
   $data = $exe->fetchAll();
-
   echo ifEmpty($data);
 }
 // END INFO
 
 // STRIPS GETTER
-function getStripsByDomain($dom,$id){
-  if(isset($id)){
-    $db = connectDb($dom);
-    $query = $db->select()
-                ->from('strips')
-                ->where('id','=',$id);
-
-    $exe = $query->execute();
-    $data = $exe->fetchAll();
-
-    echo ifEmpty($data);
-
-  }
-  else{
+function getStripsByDomain($dom,$id,$number,$offset){
   $db = connectDb($dom);
+  $number=(!is_integer($number))?9:$number;
+  $offset=(!is_integer($offset))?0:$offset;
   $query = $db->select()
               ->from('strips')
-              ->orderby('date');
-
-  $exe = $query->execute();
-
-  $data = $exe->fetchAll();
-
-  echo ifEmpty($data);
-
+              ->limit($number,$offset);
+  if($id>0) {
+    $db->where('id','=',$id);
   }
-}
-// END STRIPS
-
-//STORIES GETTER
-function getStoriesByDomain($dom,$id){
-  if(isset($id)){
-    $db = connectDb($dom);
-    $query = $db->select()
-                ->from('stories')
-                ->where('id','=',$id);
-
-    $exe = $query->execute();
-
-    $data = $exe->fetchAll();
-
-    echo ifEmpty($data);
-  }
-  else{
-  $db = connectDb($dom);
-  $query = $db->select()
-              ->from('stories')
-              ->orderby('id');
-
   $exe = $query->execute();
-
   $data = $exe->fetchAll();
-
   echo ifEmpty($data);
- }
-}
-//END STORIES
-
-function getAdmin(){
-  $db = connectDb();
-
-  $query = $db->select()
-              ->from('admin')
-              ->orderby('id');
-
-  $exe = $query->execute();
-
-  $data = $exe->fetchAll();
-
-  echo json_encode($data);
 }
 
 function getStripsByStories($dom,$id){
@@ -112,9 +52,36 @@ function getStripsByStories($dom,$id){
               ->where('story_id','=',$id)
               ->orderby('id');
   $exe = $query->execute();
-
   $data = $exe->fetchAll();
-
   echo ifEmpty($data);
 }
- ?>
+// END STRIPS
+
+//STORIES GETTER
+function getStoriesByDomain($dom,$id=0,$number,$offset){
+  $db = connectDb($dom);
+  $number=(!is_integer($number))?20:$number;
+  $offset=(!is_integer($offset))?0:$offset;
+  $query = $db->select()
+              ->from('stories')
+              ->limit($number,$offset);
+  if($id>0) {
+    $db->where('id','=',$id);
+  }
+  $exe = $query->execute();
+  $data = $exe->fetchAll();
+  echo ifEmpty($data);
+}
+
+//END STORIES
+
+function getAdmin(){
+  $db = connectDb();
+  $query = $db->select()
+              ->from('admin')
+              ->orderby('id');
+  $exe = $query->execute();
+  $data = $exe->fetchAll();
+  echo json_encode($data);
+}
+?>
