@@ -36,7 +36,7 @@ function getStripsByDomain($dom,$id,$number,$offset){
   $offset=(!is_integer($offset))?0:$offset;
   $query = $db->select()
               ->from('strips')
-              ->orderby('date','DESC');
+              ->orderby('date','DESC')
               ->limit($number,$offset);
   if($id>0) {
     $db->where('id','=',$id);
@@ -46,16 +46,24 @@ function getStripsByDomain($dom,$id,$number,$offset){
   echo ifEmpty($data);
 }
 
-function getStripsByStories($dom,$id){
+function getStripsByDate($dom,$date){
   $db = connectDb($dom);
+  $d = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+  if($d && $d->format($format) == $date) {
+
+  }
+  else {
+    $d = new DateTime();
+    $d->modify('-1 day');
+  }
   $query = $db->select()
               ->from('strips')
-              ->where('story_id','=',$id)
-              ->orderby('id');
+              ->where('date','>=',$d->format('Y-m-d H:i:s'));
   $exe = $query->execute();
   $data = $exe->fetchAll();
   echo ifEmpty($data);
 }
+
 // END STRIPS
 
 //STORIES GETTER
@@ -100,7 +108,7 @@ function getStripsByStories($dom,$id){
 function getLapinPub($id){
   $db = connectDb();
   $query = $db->select()
-              ->from('pub')
+              ->from('pub');
   if(isset($id)){
     $db->where('id','=',$id);
   }

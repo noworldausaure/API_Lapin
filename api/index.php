@@ -64,6 +64,10 @@ $app->get('/info/{domain}',function($request, $response, $args){
   getInfoByDomain($args['domain']);
 });
 
+// GET STRIPS FROM DATE
+$app->get('/strips/since/{domain}[/{date}]',function($request, $response, $args){
+  getStripsByDate($args['domain'],$args['date']);
+});
 // GET STRIPS
 $app->get('/strips/{domain}[/{id}[/{number}[/{offset}]]]',function($request, $response, $args){
   getStripsByDomain($args['domain'],$args['id'],$args['number'],$args['offset']);
@@ -123,15 +127,12 @@ $app->post('/strips/newStrip',function($request, $response, $args){
 $app->post('/stories/newStories',function($request, $response, $args){
   $response = addStories($request->getParsedBody());
   return $response;
-<<<<<<< HEAD
 })->add ($mwLoginAdmin);//OK
+
 // PUB
 $app->post('/pub/addPub/',function($request,$response,$args){
   addPub($request->getParsedBody());
 })->add($mwLoginAdmin);//OK
-=======
-})->add ($mwLoginAdmin);
->>>>>>> Added limit options on API in order to avoid huge loadings
 
 //**********
 //* DELETE *

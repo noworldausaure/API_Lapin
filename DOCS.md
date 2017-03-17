@@ -56,13 +56,29 @@ STRIPEUSE LAPIN.ORG API
 ---
 
 
-**TITLE**: Get strips from specific domain
+**TITLE**: Get strips from specific domain given a certain range (defaults to 9 strips since the last one)
 
 **URL** : /strips/:domain/:id/:number/:offset
 
 **METHOD**:GET
 
 **URL PARAMS**: Required = [domain] & Optional = [id] & Optional = [number] & Optional = [offset]
+
+**SUCCESS REPONSE** : 200
+
+**ERROR REPONSE** : 404
+
+**Note** : return one strips if id is set
+
+---
+
+**TITLE**: Get strips from specific domain since a given date (defaults to 24H)
+
+**URL** : /strips/:since/:domain/:date
+
+**METHOD**:GET
+
+**URL PARAMS**: Required = [domain] & Optional = [date]. Date is `Y-m-d H:i:s` formatted
 
 **SUCCESS REPONSE** : 200
 
