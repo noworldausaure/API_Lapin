@@ -16,7 +16,7 @@ require 'lib/loader.php';
 $app = new \Slim\App([
   'settings' => [
       'addContentLengthHeader' => false,
-
+      'displayErrorDetails' => false,
     ],
   ]);
 
@@ -58,21 +58,23 @@ $app->post('/newDomain',function($request, $response, $args){
 // INFO
 $app->get('/infoGeneral',function($request, $response, $args){
   getAllInfo();
-});//OK
+});
+// INFO BY DOMAIN
 $app->get('/info/{domain}',function($request, $response, $args){
   getInfoByDomain($args['domain']);
-});//OK
+});
 
-// STRIPS
-$app->get('/strips/{domain}[/{id}]',function($request, $response, $args){
-  getStripsByDomain($args['domain'],$args['id']);
-});//OK
-// STORIES
-$app->get('/stories/{domain}[/{id}]',function($request, $response, $args){
-  getStoriesByDomain($args['domain'],$args['id']);
-});//OK
+// GET STRIPS
+$app->get('/strips/{domain}[/{id}[/{number}[/{offset}]]]',function($request, $response, $args){
+  getStripsByDomain($args['domain'],$args['id'],$args['number'],$args['offset']);
+});
+// GET STRIPS FROM A STORY
 $app->get('/strips/stories/{domain}/{id}',function($request, $response, $args){
   getStripsByStories($args['domain'],$args['id']);
+});
+// GET STORIES
+$app->get('/stories/{domain}[/{id}[/{number}[/{offset}]]]',function($request, $response, $args){
+  getStoriesByDomain($args['domain'],$args['id'],$args['number'],$args['offset']);
 });
 // PUB
 $app->get('/pub/general[/{id}]', function($request, $response, $args){
@@ -109,23 +111,27 @@ $app->post('/{domain}/admin', function($request, $response, $args){
     if(count($response) == 1){
       return $response;
     }
-});//OK
+});
 
 // STRIPS
 $app->post('/strips/newStrip',function($request, $response, $args){
   $response = addStrip($request->getParsedBody());
   return $response;
-})->add($mwLoginAdmin);//OK
+})->add($mwLoginAdmin);
 
 // STORIES
 $app->post('/stories/newStories',function($request, $response, $args){
   $response = addStories($request->getParsedBody());
   return $response;
+<<<<<<< HEAD
 })->add ($mwLoginAdmin);//OK
 // PUB
 $app->post('/pub/addPub/',function($request,$response,$args){
   addPub($request->getParsedBody());
 })->add($mwLoginAdmin);//OK
+=======
+})->add ($mwLoginAdmin);
+>>>>>>> Added limit options on API in order to avoid huge loadings
 
 //**********
 //* DELETE *
@@ -134,17 +140,17 @@ $app->post('/pub/addPub/',function($request,$response,$args){
 // DOMAINE
 $app->post('/delete/domain', function($request, $response, $args){
   dropTheBase($request->getParsedBody());
-})->add($mwLoginAdmin);//OK
+})->add($mwLoginAdmin);
 
 //STORIES
 $app->post('/delete/stories', function($request, $response, $args){
   deleteStories($request->getParsedBody());
-})->add($mwLoginAdmin);//OK
+})->add($mwLoginAdmin);
 
 //STRIPS
 $app->post('/delete/strips',function($request, $response, $args){
   deleteStrips($request->getParsedBody());
-})->add($mwLoginAdmin);//OK
+})->add($mwLoginAdmin);
 
 $app->post('/admin/delete',function($request, $response, $args){
   deleteAdmin($request->getParsedbody());
@@ -166,16 +172,17 @@ $app->post('/update/info', function($request,$response, $args){
 //STRIPS
 $app->post('/update/strips', function($request,$response,$args){
   updateStrips($request->getParsedBody());
-})->add($mwLoginAdmin);//OK
+})->add($mwLoginAdmin);
 
 //STORIES
 $app->post('/update/stories', function($request,$response,$args){
   updateStories($request->getParsedBody());
-})->add($mwLoginAdmin);//OK
+})->add($mwLoginAdmin);
 
 $app->post('/admin/update',function($request, $response, $args){
   updateAdmin($request->getParsedBody());
 })->add($mwLoginSadmin);
+
 //PUB
 $app->post('/update/pub',function($request,$response,$args){
   updatePub($request->getParsedBody());

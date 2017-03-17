@@ -58,11 +58,11 @@ STRIPEUSE LAPIN.ORG API
 
 **TITLE**: Get strips from specific domain
 
-**URL** : /strips/:domain/:id
+**URL** : /strips/:domain/:id/:number/:offset
 
 **METHOD**:GET
 
-**URL PARAMS**: Required = [domain] & Optional = [id]
+**URL PARAMS**: Required = [domain] & Optional = [id] & Optional = [number] & Optional = [offset]
 
 **SUCCESS REPONSE** : 200
 
@@ -74,11 +74,13 @@ STRIPEUSE LAPIN.ORG API
 
 **TITLE**: Get stories from specific domain
 
-**URL** : /stories/:domain/:id
+**URL** : /stories/:domain/:id/:number/:offset
+
 
 **METHOD**:GET
 
-**URL PARAMS**: Required = [domain] & Optional = [id]
+**URL PARAMS**: Required = [domain] & Optional = [id] & Optional = [number] & Optional = [offset]
+
 
 **SUCCESS REPONSE** : 200
 
