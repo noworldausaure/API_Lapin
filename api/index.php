@@ -71,13 +71,13 @@ $app->get('/strips/image/{domain}/{id}',function($request, $response, $args){
 $app->get('/strips/since/{domain}[/{date}]',function($request, $response, $args){
   getStripsByDate($args['domain'],$args['date']);
 });
-// GET STRIPS
-$app->get('/strips/{domain}[/{id}[/{number}[/{offset}]]]',function($request, $response, $args){
-  getStripsByDomain($args['domain'],$args['id'],$args['number'],$args['offset']);
-});
 // GET STRIPS FROM A STORY
 $app->get('/strips/stories/{domain}/{id}',function($request, $response, $args){
   getStripsByStories($args['domain'],$args['id']);
+});
+// GET STRIPS
+$app->get('/strips/{domain}[/{number}[/{offset}]]',function($request, $response, $args){
+  getStripsByDomain($args['domain'],$args['number'],$args['offset']);
 });
 // GET STORIES
 $app->get('/stories/{domain}[/{id}[/{number}[/{offset}]]]',function($request, $response, $args){

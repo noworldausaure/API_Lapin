@@ -29,18 +29,25 @@ function getInfoByDomain($dom){
 }
 // END INFO
 
-// STRIPS GETTER
-function getStripsByDomain($dom,$id,$number,$offset){
+// STRIP IMAGE GETTER
+function getStripImage($dom,$id) {
   $db = connectDb($dom);
-  $number=(!is_integer($number))?9:$number;
-  $offset=(!is_integer($offset))?0:$offset;
-  $query = $db->select()
+  $query = $db->select(['file'])
               ->from('strips')
-              ->orderby('date','DESC')
+              ->where('id','=',$id);
+  $exe = $query->execute();
+  $data = $exe->fetchAll();
+  echo ifEmpty($data);
+}
+
+// STRIPS GETTER
+function getStripsByDomain($dom,$number,$offset){
+  $db = connectDb($dom);
+  $number=(intval($number)==0)?9:intval($number);
+  $offset=(intval($offset)==0)?0:intval($offset);
+  $query = $db->select(['title','story_id','date','id'])
+              ->from('strips')
               ->limit($number,$offset);
-  if($id>0) {
-    $db->where('id','=',$id);
-  }
   $exe = $query->execute();
   $data = $exe->fetchAll();
   echo ifEmpty($data);
@@ -67,16 +74,13 @@ function getStripsByDate($dom,$date){
 // END STRIPS
 
 //STORIES GETTER
-function getStoriesByDomain($dom,$id=0,$number,$offset){
+function getStoriesByDomain($dom,$number,$offset){
   $db = connectDb($dom);
   $number=(!is_integer($number))?20:$number;
   $offset=(!is_integer($offset))?0:$offset;
   $query = $db->select()
               ->from('stories')
               ->limit($number,$offset);
-  if($id>0) {
-    $db->where('id','=',$id);
-  }
   $exe = $query->execute();
   $data = $exe->fetchAll();
   echo ifEmpty($data);
