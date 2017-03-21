@@ -56,7 +56,7 @@ function getStripsByDate($dom,$date){
     $d = new DateTime();
     $d->modify('-1 day');
   }
-  $query = $db->select()
+  $query = $db->select(['title','story_id','date','id'])
               ->from('strips')
               ->where('date','>=',$d->format('Y-m-d H:i:s'));
   $exe = $query->execute();
@@ -96,7 +96,7 @@ function getAdmin(){
 
 function getStripsByStories($dom,$id){
   $db = connectDb($dom);
-  $query = $db->select()
+  $query = $db->select(['title','story_id','date','id'])
               ->from('strips')
               ->where('story_id','=',$id)
               ->orderby('date','DESC');

@@ -63,7 +63,10 @@ $app->get('/infoGeneral',function($request, $response, $args){
 $app->get('/info/{domain}',function($request, $response, $args){
   getInfoByDomain($args['domain']);
 });
-
+// GET STRIP IMAGE
+$app->get('/strips/image/{domain}/{id}',function($request, $response, $args){
+  getStripImage($args['domain'],$args['id']);
+});
 // GET STRIPS FROM DATE
 $app->get('/strips/since/{domain}[/{date}]',function($request, $response, $args){
   getStripsByDate($args['domain'],$args['date']);
