@@ -15,7 +15,7 @@ function getAllInfo(){
               ->orderby('id');
   $exe = $query->execute();
   $data = $exe->fetchAll();
-  echo ifEmpty($data);
+  echo json_encode($data);
 }
 
 // GET INFO ON DOMAINE
@@ -25,7 +25,7 @@ function getInfoByDomain($dom){
               ->from('info');
   $exe = $query->execute();
   $data = $exe->fetchAll();
-  echo ifEmpty($data);
+  echo json_encode($data);
 }
 // END INFO
 
@@ -37,7 +37,7 @@ function getStripImage($dom,$id) {
               ->where('id','=',$id);
   $exe = $query->execute();
   $data = $exe->fetchAll();
-  echo ifEmpty($data);
+  echo json_encode($data);
 }
 
 // STRIPS GETTER
@@ -50,7 +50,7 @@ function getStripsByDomain($dom,$number,$offset){
               ->limit($number,$offset);
   $exe = $query->execute();
   $data = $exe->fetchAll();
-  echo ifEmpty($data);
+  echo json_encode($data);
 }
 
 function getStripsByDate($dom,$date){
@@ -68,7 +68,7 @@ function getStripsByDate($dom,$date){
               ->where('date','>=',$d->format('Y-m-d H:i:s'));
   $exe = $query->execute();
   $data = $exe->fetchAll();
-  echo ifEmpty($data);
+  echo json_encode($data);
 }
 
 // END STRIPS
@@ -83,7 +83,7 @@ function getStoriesByDomain($dom,$number,$offset){
               ->limit($number,$offset);
   $exe = $query->execute();
   $data = $exe->fetchAll();
-  echo ifEmpty($data);
+  echo json_encode($data);
 }
 
 //END STORIES
@@ -106,7 +106,7 @@ function getStripsByStories($dom,$id){
               ->orderby('date','DESC');
   $exe = $query->execute();
   $data = $exe->fetchAll();
-  echo ifEmpty($data);
+  echo json_encode($data);
 }
 
 function getLapinPub($id){

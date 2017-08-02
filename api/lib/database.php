@@ -27,7 +27,7 @@ function makeDsn($db){
   global $dbAdmin, $host;
 
   if(!empty($db)){
-    return 'mysql:host='.$host.';dbname='.$db.';charset=utf8';
+    return 'mysql:host='.$host.';dbname=lapin_'.$db.';charset=utf8';
   }
   else{
     return 'mysql:host='.$host.';dbname='.$dbAdmin.';charset=utf8';
