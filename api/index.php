@@ -47,6 +47,10 @@ $mwLoginSadmin = function ($request, $response, $next) {
     }
 };
 
+$app->any('/',function($request,$response, $args) {
+    $response->write("<pre>" . file_get_contents("../DOCS.md") . "</pre>");
+});
+
 $app->post('/newDomain',function($request, $response, $args){
   newDomain($request->getParsedBody());
 })->add($mwLoginSadmin);
