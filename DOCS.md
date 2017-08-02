@@ -88,6 +88,22 @@ STRIPEUSE LAPIN.ORG API
 
 ---
 
+**TITLE**: Get a strip's image
+
+**URL** : /strips/image/:domain/:id
+
+**METHOD**:GET
+
+**URL PARAMS**: Required = [domain] & Required = [id]
+
+**SUCCESS REPONSE** : 200
+
+**ERROR REPONSE** : 404
+
+**Note** : return one base64 content of an image
+
+---
+
 **TITLE**: Get stories from specific domain
 
 **URL** : /stories/:domain/:id/:number/:offset
