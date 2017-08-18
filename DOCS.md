@@ -271,7 +271,7 @@ STRIPEUSE LAPIN.ORG API
 
 **TITLE**: add new stories on specific domain
 
-**URL** : /Stories/newStories
+**URL** : /stories/newStories
 
 **METHOD**:POST
 
